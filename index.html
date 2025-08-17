@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kết nối thể thao - Tìm đồng đội. Ra sân. Vui khỏe.</title>
+    <meta name="description" content="Nền tảng kết nối người chơi thể thao ngoài trời. Tìm đối tác phù hợp theo môn thể thao, trình độ, địa điểm và thời gian.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Kết nối thể thao - Tìm đồng đội. Ra sân. Vui khỏe.">
+    <meta property="og:description" content="Nền tảng kết nối người chơi thể thao ngoài trời. Tìm đối tác phù hợp theo môn thể thao, trình độ, địa điểm và thời gian.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ketnoithethao.com">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&h=630&fit=crop">
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://ketnoithethao.com">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0066FF',
+                        accent: '#FF8A00',
+                        neutral: '#F7FAFC'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                        'heading': ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Heroicons -->
+    <script src="https://unpkg.com/heroicons@2.0.18/24/outline/index.js" type="module"></script>
+    
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Kết nối thể thao",
+        "url": "https://ketnoithethao.com",
+        "description": "Nền tảng kết nối người chơi thể thao ngoài trời",
+        "sameAs": [
+            "https://facebook.com/ketnoithethao",
+            "https://instagram.com/ketnoithethao"
+        ]
+    }
+    </script>
+    
+    <style>
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .btn-hover {
+            transition: all 0.3s ease;
+        }
+        .btn-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 102, 255, 0.3);
+        }
+    </style>
+</head>
+<body class="font-sans bg-neutral text-gray-800">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="font-heading font-bold text-2xl text-primary">
+                Kết nối thể thao
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#how-it-works" class="text-gray-600 hover:text-primary transition-colors">Cách hoạt động</a>
+                <a href="#events" class="text-gray-600 hover:text-primary transition-colors">Sự kiện</a>
+                <a href="#contact" class="text-gray-600 hover:text-primary transition-colors">Liên hệ</a>
+            </div>
+            <button class="bg-primary text-white px-6 py-2 rounded-lg btn-hover" onclick="openAuthModal()">
+                Đăng nhập
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-primary to-blue-800 text-white py-16 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-10"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
+                    <span class="text-sm font-medium">🏆 Nền tảng thể thao #1 Việt Nam</span>
+                </div>
+                <h1 class="font-heading font-bold text-3xl md:text-5xl mb-4 leading-tight">
+                    Kết nối. Thi đấu. Chiến thắng.
+                </h1>
+                <p class="text-lg mb-8 opacity-90 max-w-2xl mx-auto">
+                    Tìm đối thủ xứng tầm, tham gia giải đấu chuyên nghiệp và nâng cao kỹ năng thể thao của bạn
+                </p>
+                
+                <!-- Compact Search Bar -->
+                <div class="bg-white rounded-xl p-4 shadow-xl text-gray-800 max-w-3xl mx-auto">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-3">
+                        <select class="p-2.5 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" aria-label="Chọn môn thể thao">
+                            <option>⚽ Môn thể thao</option>
+                            <option>⚽ Bóng đá</option>
+                            <option>🏸 Cầu lông</option>
+                            <option>🎾 Tennis</option>
+                            <option>🏃 Chạy bộ</option>
+                            <option>🏀 Bóng rổ</option>
+                            <option>🏐 Bóng chuyền</option>
+                        </select>
+                        <select class="p-2.5 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" aria-label="Chọn trình độ">
+                            <option>📊 Trình độ</option>
+                            <option>🥉 Mới bắt đầu</option>
+                            <option>🥈 Trung bình</option>
+                            <option>🥇 Nâng cao</option>
+                            <option>🏆 Chuyên nghiệp</option>
+                        </select>
+                        <input type="text" placeholder="📍 Địa điểm" class="p-2.5 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" aria-label="Nhập địa điểm">
+                        <input type="date" class="p-2.5 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" aria-label="Chọn ngày">
+                    </div>
+                    <button class="w-full bg-accent hover:bg-orange-600 text-white py-2.5 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105" onclick="searchMatches()">
+                        🔍 Tìm đối thủ ngay
+                    </button>
+                </div>
+                
+                <!-- Quick Stats -->
+                <div class="grid grid-cols-3 gap-6 mt-12 max-w-lg mx-auto">
+                    <div class="text-center">
+                        <div class="text-2xl font-bold">10K+</div>
+                        <div class="text-sm opacity-80">Vận động viên</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold">500+</div>
+                        <div class="text-sm opacity-80">Trận đấu/tuần</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold">15+</div>
+                        <div class="text-sm opacity-80">Môn thể thao</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="font-heading font-bold text-2xl md:text-3xl mb-4">
+                    Nâng tầm trải nghiệm thể thao
+                </h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Từ việc tìm đối thủ phù hợp đến tham gia giải đấu chuyên nghiệp
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow fade-in">
+                    <div class="bg-gradient-to-br from-blue-500 to-primary w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-white text-xl">🎯</span>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Matching thông minh</h3>
+                    <p class="text-gray-600 text-sm">Thuật toán AI tìm đối thủ phù hợp với trình độ và sở thích</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow fade-in">
+                    <div class="bg-gradient-to-br from-orange-500 to-accent w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-white text-xl">🏆</span>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Giải đấu chuyên nghiệp</h3>
+                    <p class="text-gray-600 text-sm">Tham gia các giải đấu được tổ chức bài bản với giải thưởng hấp dẫn</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow fade-in">
+                    <div class="bg-gradient-to-br from-green-500 to-emerald-600 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-white text-xl">📊</span>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Theo dõi thành tích</h3>
+                    <p class="text-gray-600 text-sm">Thống kê chi tiết về kết quả thi đấu và tiến bộ cá nhân</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow fade-in">
+                    <div class="bg-gradient-to-br from-purple-500 to-indigo-600 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-white text-xl">👥</span>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Cộng đồng sôi động</h3>
+                    <p class="text-gray-600 text-sm">Kết nối với hàng nghìn vận động viên đam mê thể thao</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-20 bg-neutral">
+        <div class="container mx-auto px-4">
+            <h2 class="font-heading font-bold text-3xl md:text-4xl text-center mb-16">
+                Cách hoạt động
+            </h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center fade-in">
+                    <div class="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">1</div>
+                    <h3 class="font-semibold text-xl mb-4">Tìm kiếm</h3>
+                    <p class="text-gray-600">Nhập thông tin môn thể thao, địa điểm và thời gian mong muốn</p>
+                </div>
+                <div class="text-center fade-in">
+                    <div class="bg-accent text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">2</div>
+                    <h3 class="font-semibold text-xl mb-4">Kết nối</h3>
+                    <p class="text-gray-600">Liên hệ với những người chơi phù hợp và sắp xếp lịch</p>
+                </div>
+                <div class="text-center fade-in">
+                    <div class="bg-green-500 text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">3</div>
+                    <h3 class="font-semibold text-xl mb-4">Ra sân</h3>
+                    <p class="text-gray-600">Gặp mặt và tận hưởng trận đấu thú vị cùng nhau</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Find Partners Section -->
+    <section id="find-partners" class="py-16 bg-gradient-to-br from-blue-50 to-indigo-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-10">
+                <div>
+                    <h2 class="font-heading font-bold text-2xl md:text-3xl mb-2">
+                        Tìm đối tác chơi cùng
+                    </h2>
+                    <p class="text-gray-600">Kết nối với những người cùng đam mê thể thao trong khu vực</p>
+                </div>
+                <div class="flex space-x-3 mt-4 md:mt-0">
+                    <select class="p-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary bg-white" onchange="filterPartnerPosts(this.value)">
+                        <option value="">🏃 Tất cả môn</option>
+                        <option value="football">⚽ Bóng đá</option>
+                        <option value="badminton">🏸 Cầu lông</option>
+                        <option value="tennis">🎾 Tennis</option>
+                        <option value="basketball">🏀 Bóng rổ</option>
+                        <option value="running">🏃 Chạy bộ</option>
+                    </select>
+                    <button class="bg-primary hover:bg-blue-700 text-white px-4 py-2 text-sm rounded-lg transition-colors" onclick="openFindPartnerModal()">
+                        + Đăng tìm đối tác
+                    </button>
+                </div>
+            </div>
+            
+            <div id="partner-posts-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Partner posts will be populated by JavaScript -->
+            </div>
+            
+            <!-- View More Button -->
+            <div class="text-center mt-10">
+                <button class="bg-white hover:bg-gray-50 text-gray-700 px-8 py-3 rounded-lg font-medium transition-colors border border-gray-200">
+                    Xem thêm bài đăng →
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Events -->
+    <section id="events" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-10">
+                <div>
+                    <h2 class="font-heading font-bold text-2xl md:text-3xl mb-2">
+                        Trận đấu & Giải đấu
+                    </h2>
+                    <p class="text-gray-600">Tham gia ngay các sự kiện thể thao hấp dẫn</p>
+                </div>
+                <div class="flex space-x-3 mt-4 md:mt-0">
+                    <select class="p-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary" onchange="filterEvents(this.value)">
+                        <option value="">🏃 Tất cả môn</option>
+                        <option value="football">⚽ Bóng đá</option>
+                        <option value="badminton">🏸 Cầu lông</option>
+                        <option value="tennis">🎾 Tennis</option>
+                        <option value="basketball">🏀 Bóng rổ</option>
+                    </select>
+                    <button class="bg-accent hover:bg-orange-600 text-white px-4 py-2 text-sm rounded-lg transition-colors" onclick="openCreateEventModal()">
+                        + Tạo trận đấu
+                    </button>
+                </div>
+            </div>
+            
+            <div id="events-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Event cards will be populated by JavaScript -->
+            </div>
+            
+            <!-- View More Button -->
+            <div class="text-center mt-10">
+                <button class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-8 py-3 rounded-lg font-medium transition-colors">
+                    Xem thêm trận đấu →
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="font-heading font-bold text-2xl md:text-3xl mb-4">
+                    Câu chuyện thành công
+                </h2>
+                <p class="text-gray-600">Những vận động viên đã thay đổi cuộc sống qua nền tảng</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 fade-in">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face" 
+                             alt="Minh Tuấn" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <h4 class="font-semibold text-sm">Minh Tuấn</h4>
+                            <p class="text-gray-500 text-xs">🏃 Runner • Hà Nội</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 text-sm leading-relaxed">"Từ khi tham gia, tôi đã chạy được 15 marathon và có nhóm training cố định. Thành tích cá nhân cải thiện rõ rệt!"</p>
+                    <div class="mt-3 text-xs text-primary font-medium">⭐ 4.9/5 • 50+ trận đấu</div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 fade-in">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=60&h=60&fit=crop&crop=face" 
+                             alt="Thu Hà" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <h4 class="font-semibold text-sm">Thu Hà</h4>
+                            <p class="text-gray-500 text-xs">🏸 Badminton • TP.HCM</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 text-sm leading-relaxed">"Vô địch giải cầu lông nữ khu vực sau 6 tháng training với các đối thủ mạnh tìm được trên app."</p>
+                    <div class="mt-3 text-xs text-primary font-medium">🏆 Vô địch • 80+ trận thắng</div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 fade-in">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=60&h=60&fit=crop&crop=face" 
+                             alt="Đức Anh" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <h4 class="font-semibold text-sm">Đức Anh</h4>
+                            <p class="text-gray-500 text-xs">⚽ Football • Đà Nẵng</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 text-sm leading-relaxed">"Từ player nghiệp dư thành đội trưởng đội bóng bán chuyên. Networking trong thể thao thật sự quan trọng!"</p>
+                    <div class="mt-3 text-xs text-primary font-medium">⚽ Đội trưởng • 100+ goals</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="font-heading font-bold text-2xl md:text-3xl mb-4">
+                            Bắt đầu hành trình thể thao
+                        </h2>
+                        <p class="text-gray-600 mb-6">
+                            Tham gia cộng đồng vận động viên lớn nhất Việt Nam. Đăng ký ngay để nhận thông tin về các trận đấu và giải đấu mới nhất.
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="bg-primary/10 w-8 h-8 rounded-full flex items-center justify-center mr-3">
+                                    <span class="text-primary text-sm">✓</span>
+                                </div>
+                                <span class="text-sm text-gray-700">Miễn phí tham gia và sử dụng</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="bg-primary/10 w-8 h-8 rounded-full flex items-center justify-center mr-3">
+                                    <span class="text-primary text-sm">✓</span>
+                                </div>
+                                <span class="text-sm text-gray-700">Kết nối với 10,000+ vận động viên</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="bg-primary/10 w-8 h-8 rounded-full flex items-center justify-center mr-3">
+                                    <span class="text-primary text-sm">✓</span>
+                                </div>
+                                <span class="text-sm text-gray-700">Hỗ trợ 24/7 từ đội ngũ chuyên nghiệp</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-8 rounded-2xl">
+                        <form id="contact-form" class="space-y-4">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <input type="text" id="name" name="name" placeholder="Họ và tên *" required 
+                                           class="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-sm"
+                                           aria-describedby="name-error">
+                                    <div id="name-error" class="text-red-500 text-xs mt-1 hidden"></div>
+                                </div>
+                                <div>
+                                    <input type="email" id="email" name="email" placeholder="Email *" required 
+                                           class="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-sm"
+                                           aria-describedby="email-error">
+                                    <div id="email-error" class="text-red-500 text-xs mt-1 hidden"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <select name="sport" class="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-sm">
+                                    <option>Môn thể thao quan tâm</option>
+                                    <option>⚽ Bóng đá</option>
+                                    <option>🏸 Cầu lông</option>
+                                    <option>🎾 Tennis</option>
+                                    <option>🏀 Bóng rổ</option>
+                                    <option>🏃 Chạy bộ</option>
+                                </select>
+                            </div>
+                            <div>
+                                <textarea id="message" name="message" rows="3" placeholder="Tin nhắn (tùy chọn)"
+                                          class="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-sm"
+                                          aria-describedby="message-error"></textarea>
+                                <div id="message-error" class="text-red-500 text-xs mt-1 hidden"></div>
+                            </div>
+                            <div class="flex items-start">
+                                <input type="checkbox" id="privacy" name="privacy" required class="mr-2 mt-1">
+                                <label for="privacy" class="text-xs text-gray-600">
+                                    Tôi đồng ý nhận thông tin về các trận đấu và giải đấu từ Kết nối thể thao *
+                                </label>
+                            </div>
+                            <button type="submit" class="w-full bg-primary hover:bg-blue-700 text-white py-3 rounded-lg font-semibold transition-colors">
+                                🚀 Tham gia ngay
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="font-heading font-bold text-xl mb-4">Kết nối thể thao</h3>
+                    <p class="text-gray-400 mb-4">Nền tảng kết nối người chơi thể thao hàng đầu Việt Nam</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors" aria-label="Facebook">📘</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors" aria-label="Instagram">📷</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors" aria-label="Twitter">🐦</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Sản phẩm</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Tìm đối chơi</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Tạo sự kiện</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Cộng đồng</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Hỗ trợ</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Trung tâm trợ giúp</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Liên hệ</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Pháp lý</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Chính sách bảo mật</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Điều khoản sử dụng</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Cookie</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Kết nối thể thao. Tất cả quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl max-w-md w-full p-6">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="font-heading font-bold text-xl">Đăng ký ngay</h3>
+                <button onclick="closeAuthModal()" class="text-gray-500 hover:text-gray-700">&times;</button>
+            </div>
+            <form id="auth-form">
+                <div class="mb-4">
+                    <label for="auth-email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                    <input type="email" id="auth-email" required 
+                           class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                </div>
+                <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg font-semibold btn-hover">
+                    Đăng ký miễn phí
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Find Partner Modal -->
+    <div id="find-partner-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl max-w-md w-full p-6">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="font-heading font-bold text-xl">Đăng tìm đối tác</h3>
+                <button onclick="closeFindPartnerModal()" class="text-gray-500 hover:text-gray-700">&times;</button>
+            </div>
+            <form id="find-partner-form">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Tiêu đề</label>
+                        <input type="text" placeholder="VD: Tìm bạn chơi tennis cuối tuần" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Môn thể thao</label>
+                        <select required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                            <option value="">Chọn môn thể thao</option>
+                            <option value="football">⚽ Bóng đá</option>
+                            <option value="badminton">🏸 Cầu lông</option>
+                            <option value="tennis">🎾 Tennis</option>
+                            <option value="basketball">🏀 Bóng rổ</option>
+                            <option value="running">🏃 Chạy bộ</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Trình độ mong muốn</label>
+                        <select required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                            <option value="">Chọn trình độ</option>
+                            <option value="beginner">🥉 Mới bắt đầu</option>
+                            <option value="intermediate">🥈 Trung bình</option>
+                            <option value="advanced">🥇 Nâng cao</option>
+                            <option value="any">🏆 Mọi trình độ</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Địa điểm</label>
+                        <input type="text" placeholder="VD: Quận 1, TP.HCM" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Thời gian mong muốn</label>
+                        <input type="text" placeholder="VD: Thứ 7 - Chủ nhật, 7-9h sáng" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Mô tả thêm</label>
+                        <textarea rows="3" placeholder="Chia sẻ thêm về bản thân, mong muốn..." class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg font-semibold btn-hover mt-6">
+                    Đăng bài tìm đối tác
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Create Event Modal -->
+    <div id="create-event-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl max-w-md w-full p-6">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="font-heading font-bold text-xl">Tạo sự kiện mới</h3>
+                <button onclick="closeCreateEventModal()" class="text-gray-500 hover:text-gray-700">&times;</button>
+            </div>
+            <form id="create-event-form">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Tên sự kiện</label>
+                        <input type="text" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Môn thể thao</label>
+                        <select required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                            <option value="">Chọn môn thể thao</option>
+                            <option value="football">Bóng đá</option>
+                            <option value="badminton">Cầu lông</option>
+                            <option value="tennis">Tennis</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Địa điểm</label>
+                        <input type="text" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Thời gian</label>
+                        <input type="datetime-local" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-accent text-white py-3 rounded-lg font-semibold btn-hover mt-6">
+                    Tạo sự kiện
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Sample partner posts data
+        const partnerPostsData = [
+            {
+                id: 1,
+                title: "Tìm bạn chơi tennis cuối tuần",
+                sport: "tennis",
+                author: "Minh Anh",
+                authorAvatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=60&h=60&fit=crop&crop=face",
+                level: "🥈 Trung bình",
+                location: "Quận 3, TP.HCM",
+                timePreference: "Thứ 7-CN, 7-9h sáng",
+                description: "Mình chơi tennis được 2 năm, muốn tìm bạn cùng trình độ để luyện tập đều đặn. Có sân riêng, chỉ cần chia tiền sân.",
+                postedTime: "2 giờ trước",
+                responses: 5
+            },
+            {
+                id: 2,
+                title: "Cần thêm 2 người cho đội bóng đá",
+                sport: "football",
+                author: "Đức Thành",
+                authorAvatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face",
+                level: "🥇 Nâng cao",
+                location: "Cầu Giấy, Hà Nội",
+                timePreference: "Thứ 3, 5, 7 - 19h",
+                description: "Đội mình thiếu 2 tiền vệ và 1 hậu vệ. Chơi thường xuyên, có HLV hướng dẫn. Phí tháng 500k.",
+                postedTime: "5 giờ trước",
+                responses: 12
+            },
+            {
+                id: 3,
+                title: "Nhóm chạy bộ sáng sớm tuyển thành viên",
+                sport: "running",
+                author: "Thu Hương",
+                authorAvatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=60&h=60&fit=crop&crop=face",
+                level: "🏆 Mọi trình độ",
+                location: "Công viên Thống Nhất",
+                timePreference: "Hàng ngày 5h30-6h30",
+                description: "Nhóm chạy bộ thân thiện, có cả người mới và runner kinh nghiệm. Cùng nhau động viên và tiến bộ!",
+                postedTime: "1 ngày trước",
+                responses: 8
+            },
+            {
+                id: 4,
+                title: "Tìm đối thủ cầu lông trình độ cao",
+                sport: "badminton",
+                author: "Hoàng Nam",
+                authorAvatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=60&h=60&fit=crop&crop=face",
+                level: "🥇 Nâng cao",
+                location: "Quận 1, TP.HCM",
+                timePreference: "Tối thứ 2,4,6 - 20h",
+                description: "Chơi cầu lông 5 năm, từng thi đấu cấp tỉnh. Muốn tìm đối thủ mạnh để cải thiện kỹ thuật.",
+                postedTime: "3 giờ trước",
+                responses: 3
+            },
+            {
+                id: 5,
+                title: "Nhóm bóng rổ thiếu 1 point guard",
+                sport: "basketball",
+                author: "Quang Minh",
+                authorAvatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=60&h=60&fit=crop&crop=face",
+                level: "🥈 Trung bình",
+                location: "Quận 7, TP.HCM",
+                timePreference: "Chủ nhật 16-18h",
+                description: "Team bóng rổ 4vs4, cần thêm 1 point guard. Chơi vui vẻ, không quá căng thẳng. Tuổi 20-30.",
+                postedTime: "6 giờ trước",
+                responses: 7
+            },
+            {
+                id: 6,
+                title: "Tìm bạn tập gym và chạy bộ",
+                sport: "running",
+                author: "Lan Anh",
+                authorAvatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=60&h=60&fit=crop&crop=face",
+                level: "🥉 Mới bắt đầu",
+                location: "Quận Thanh Xuân, Hà Nội",
+                timePreference: "Tối 18-20h",
+                description: "Mới bắt đầu tập thể thao, muốn tìm bạn cùng động viên nhau. Có thể tập gym hoặc chạy bộ.",
+                postedTime: "4 giờ trước",
+                responses: 9
+            }
+        ];
+
+        // Sample events data
+        const eventsData = [
+            {
+                id: 1,
+                title: "Giải bóng đá 7vs7 Weekend",
+                sport: "football",
+                location: "Sân Mỹ Đình, Hà Nội",
+                time: "2024-01-20 07:00",
+                participants: "14/16",
+                level: "🥈 Trung bình",
+                prize: "2.000.000đ",
+                type: "tournament",
+                image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=300&h=200&fit=crop"
+            },
+            {
+                id: 2,
+                title: "Cầu lông Singles Championship",
+                sport: "badminton",
+                location: "CLB Cầu lông Thanh Xuân",
+                time: "2024-01-21 15:00",
+                participants: "12/16",
+                level: "🥇 Nâng cao",
+                prize: "1.500.000đ",
+                type: "tournament",
+                image: "https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=300&h=200&fit=crop"
+            },
+            {
+                id: 3,
+                title: "Tennis Doubles Training",
+                sport: "tennis",
+                location: "Sân tennis Ciputra",
+                time: "2024-01-22 09:00",
+                participants: "6/8",
+                level: "🥉 Mới bắt đầu",
+                prize: "Miễn phí",
+                type: "practice",
+                image: "https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=300&h=200&fit=crop"
+            },
+            {
+                id: 4,
+                title: "Basketball 3x3 Street League",
+                sport: "basketball",
+                location: "Sân bóng rổ Hồ Tây",
+                time: "2024-01-23 18:00",
+                participants: "8/12",
+                level: "🥈 Trung bình",
+                prize: "3.000.000đ",
+                type: "tournament",
+                image: "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=300&h=200&fit=crop"
+            },
+            {
+                id: 5,
+                title: "Marathon Training Group",
+                sport: "running",
+                location: "Công viên Thống Nhất",
+                time: "2024-01-24 06:00",
+                participants: "25/30",
+                level: "🏆 Mọi trình độ",
+                prize: "Miễn phí",
+                type: "practice",
+                image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=200&fit=crop"
+            },
+            {
+                id: 6,
+                title: "Volleyball Beach Tournament",
+                sport: "volleyball",
+                location: "Bãi biển Đồ Sơn",
+                time: "2024-01-25 14:00",
+                participants: "16/20",
+                level: "🥇 Nâng cao",
+                prize: "5.000.000đ",
+                type: "tournament",
+                image: "https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?w=300&h=200&fit=crop"
+            }
+        ];
+
+        // Render partner posts
+        function renderPartnerPosts(posts = partnerPostsData.slice(0, 6)) {
+            const postsGrid = document.getElementById('partner-posts-grid');
+            postsGrid.innerHTML = posts.map(post => `
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow p-6 fade-in">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex items-center">
+                            <img src="${post.authorAvatar}" alt="${post.author}" class="w-10 h-10 rounded-full mr-3">
+                            <div>
+                                <h4 class="font-semibold text-sm">${post.author}</h4>
+                                <p class="text-xs text-gray-500">${post.postedTime}</p>
+                            </div>
+                        </div>
+                        <span class="text-xs font-medium px-2 py-1 bg-primary/10 text-primary rounded-full">
+                            ${post.level}
+                        </span>
+                    </div>
+                    
+                    <h3 class="font-semibold text-lg mb-3 line-clamp-2">${post.title}</h3>
+                    
+                    <div class="space-y-2 text-sm text-gray-600 mb-4">
+                        <div class="flex items-center">
+                            <span class="w-4">📍</span>
+                            <span class="ml-2">${post.location}</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="w-4">⏰</span>
+                            <span class="ml-2">${post.timePreference}</span>
+                        </div>
+                    </div>
+                    
+                    <p class="text-sm text-gray-700 mb-4 line-clamp-3">${post.description}</p>
+                    
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-gray-500">💬 ${post.responses} phản hồi</span>
+                        <button class="bg-primary hover:bg-blue-700 text-white px-4 py-2 text-sm rounded-lg transition-colors" onclick="contactPartner(${post.id})">
+                            Liên hệ
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+            
+            // Trigger fade-in animation
+            setTimeout(() => {
+                document.querySelectorAll('.fade-in').forEach(el => {
+                    el.classList.add('visible');
+                });
+            }, 100);
+        }
+
+        // Filter partner posts
+        function filterPartnerPosts(sport) {
+            const filteredPosts = sport ? partnerPostsData.filter(post => post.sport === sport) : partnerPostsData;
+            renderPartnerPosts(filteredPosts);
+        }
+
+        // Contact partner
+        function contactPartner(postId) {
+            alert(`Bạn đã gửi yêu cầu kết nối với bài đăng #${postId}! Chúng tôi sẽ thông báo cho người đăng.`);
+        }
+
+        // Render events
+        function renderEvents(events = eventsData.slice(0, 6)) {
+            const eventsGrid = document.getElementById('events-grid');
+            eventsGrid.innerHTML = events.map(event => `
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow overflow-hidden fade-in">
+                    <div class="relative">
+                        <img src="${event.image}" alt="${event.title}" class="w-full h-40 object-cover" loading="lazy">
+                        <div class="absolute top-3 left-3">
+                            <span class="bg-${event.type === 'tournament' ? 'accent' : 'primary'} text-white text-xs px-2 py-1 rounded-full font-medium">
+                                ${event.type === 'tournament' ? '🏆 Giải đấu' : '🏃 Luyện tập'}
+                            </span>
+                        </div>
+                        <div class="absolute top-3 right-3">
+                            <span class="bg-white/90 backdrop-blur-sm text-gray-800 text-xs px-2 py-1 rounded-full font-medium">
+                                ${event.prize}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-semibold text-lg mb-3 line-clamp-2">${event.title}</h3>
+                        <div class="space-y-2 text-sm text-gray-600 mb-4">
+                            <div class="flex items-center">
+                                <span class="w-4">📍</span>
+                                <span class="ml-2">${event.location}</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="w-4">⏰</span>
+                                <span class="ml-2">${new Date(event.time).toLocaleDateString('vi-VN')} • ${new Date(event.time).toLocaleTimeString('vi-VN', {hour: '2-digit', minute: '2-digit'})}</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <span class="w-4">👥</span>
+                                    <span class="ml-2">${event.participants}</span>
+                                </div>
+                                <span class="text-xs font-medium">${event.level}</span>
+                            </div>
+                        </div>
+                        <button class="w-full bg-primary hover:bg-blue-700 text-white py-2.5 rounded-lg font-medium transition-colors text-sm" onclick="joinEvent(${event.id})">
+                            ${event.type === 'tournament' ? 'Đăng ký thi đấu' : 'Tham gia luyện tập'}
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+            
+            // Trigger fade-in animation
+            setTimeout(() => {
+                document.querySelectorAll('.fade-in').forEach(el => {
+                    el.classList.add('visible');
+                });
+            }, 100);
+        }
+
+        // Filter events
+        function filterEvents(sport) {
+            const filteredEvents = sport ? eventsData.filter(event => event.sport === sport) : eventsData;
+            renderEvents(filteredEvents);
+        }
+
+        // Search matches
+        function searchMatches() {
+            document.getElementById('events').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Join event
+        function joinEvent(eventId) {
+            alert(`Bạn đã đăng ký tham gia sự kiện #${eventId}! Chúng tôi sẽ liên hệ với bạn sớm.`);
+        }
+
+        // Modal functions
+        function openAuthModal() {
+            document.getElementById('auth-modal').classList.remove('hidden');
+        }
+
+        function closeAuthModal() {
+            document.getElementById('auth-modal').classList.add('hidden');
+        }
+
+        function openFindPartnerModal() {
+            document.getElementById('find-partner-modal').classList.remove('hidden');
+        }
+
+        function closeFindPartnerModal() {
+            document.getElementById('find-partner-modal').classList.add('hidden');
+        }
+
+        function openCreateEventModal() {
+            document.getElementById('create-event-modal').classList.remove('hidden');
+        }
+
+        function closeCreateEventModal() {
+            document.getElementById('create-event-modal').classList.add('hidden');
+        }
+
+        // Form validation and submission
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        function showError(fieldId, message) {
+            const errorDiv = document.getElementById(fieldId + '-error');
+            errorDiv.textContent = message;
+            errorDiv.classList.remove('hidden');
+        }
+
+        function hideError(fieldId) {
+            const errorDiv = document.getElementById(fieldId + '-error');
+            errorDiv.classList.add('hidden');
+        }
+
+        // Contact form submission
+        document.getElementById('contact-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Clear previous errors
+            ['name', 'email', 'message'].forEach(field => hideError(field));
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Validation
+            let isValid = true;
+            
+            if (!data.name.trim()) {
+                showError('name', 'Vui lòng nhập họ và tên');
+                isValid = false;
+            }
+            
+            if (!data.email.trim()) {
+                showError('email', 'Vui lòng nhập email');
+                isValid = false;
+            } else if (!validateEmail(data.email)) {
+                showError('email', 'Email không hợp lệ');
+                isValid = false;
+            }
+            
+            if (!data.message.trim()) {
+                showError('message', 'Vui lòng nhập tin nhắn');
+                isValid = false;
+            }
+            
+            if (!isValid) return;
+            
+            // Submit to webhook (replace with your actual endpoint)
+            try {
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                if (response.ok) {
+                    alert('Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất có thể.');
+                    this.reset();
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+            } catch (error) {
+                console.log('Contact form data:', data);
+                alert('Cảm ơn bạn đã liên hệ! (Demo mode - dữ liệu đã được ghi log)');
+                this.reset();
+            }
+        });
+
+        // Auth form submission
+        document.getElementById('auth-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('auth-email').value;
+            
+            if (!validateEmail(email)) {
+                alert('Vui lòng nhập email hợp lệ');
+                return;
+            }
+            
+            alert(`Cảm ơn bạn đã đăng ký với email: ${email}`);
+            closeAuthModal();
+            this.reset();
+        });
+
+        // Find partner form submission
+        document.getElementById('find-partner-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Bài đăng tìm đối tác đã được tạo thành công! Chúng tôi sẽ thông báo khi có người quan tâm.');
+            closeFindPartnerModal();
+            this.reset();
+        });
+
+        // Create event form submission
+        document.getElementById('create-event-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Sự kiện đã được tạo thành công! Chúng tôi sẽ xem xét và phê duyệt sớm.');
+            closeCreateEventModal();
+            this.reset();
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            renderPartnerPosts();
+            renderEvents();
+            
+            // Observe fade-in elements
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+
+        // Close modals when clicking outside
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('fixed') && e.target.classList.contains('inset-0')) {
+                closeAuthModal();
+                closeFindPartnerModal();
+                closeCreateEventModal();
+            }
+        });
+
+        // Keyboard navigation for modals
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeAuthModal();
+                closeFindPartnerModal();
+                closeCreateEventModal();
+            }
+        });
+    </script>
+
+    <!-- Google Analytics (Optional) -->
+    <!-- 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+    -->
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97063150a5006682',t:'MTc1NTQwMjQ3My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
