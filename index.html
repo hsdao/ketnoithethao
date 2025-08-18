@@ -1,92 +1,75 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-        <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RDFZXN6B79"> </script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    
-      gtag('config', 'G-RDFZXN6B79');
-    </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kết nối thể thao - Tìm đồng đội. Ra sân. Vui khỏe.</title>
-    <meta name="description" content="Nền tảng kết nối người chơi thể thao ngoài trời. Tìm đối tác phù hợp theo môn thể thao, trình độ, địa điểm và thời gian.">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="Kết nối thể thao - Tìm đồng đội. Ra sân. Vui khỏe.">
-    <meta property="og:description" content="Nền tảng kết nối người chơi thể thao ngoài trời. Tìm đối tác phù hợp theo môn thể thao, trình độ, địa điểm và thời gian.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ketnoithethao.com">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&h=630&fit=crop">
-    
-    <!-- Canonical -->
-    <link rel="canonical" href="https://ketnoithethao.com">
-    
-    <!-- Fonts -->
-     <link rel="preconnect" href="https://fonts.googleapis.com">
-     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"> defer</script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#0066FF',
-                        accent: '#FF8A00',
-                        neutral: '#F7FAFC'
-                    },
-                    fontFamily: {
-                        'sans': ['Inter', 'sans-serif'],
-                        'heading': ['Poppins', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
-    
-    <!-- Heroicons -->
-    <script src="https://unpkg.com/heroicons@2.0.18/24/outline/index.js" type="module"></script>
-    
-    <!-- JSON-LD -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Kết nối thể thao",
-        "url": "https://ketnoithethao.com",
-        "description": "Nền tảng kết nối người chơi thể thao ngoài trời",
-        "sameAs": [
-            "https://facebook.com/ketnoithethao",
-            "https://instagram.com/ketnoithethao"
-        ]
-    }
-    </script>
-    
-    <style>
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .btn-hover {
-            transition: all 0.3s ease;
-        }
-        .btn-hover:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 102, 255, 0.3);
-        }
-    </style>
+  <!-- Google tag (gtag.js) - async, không chặn render -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RDFZXN6B79"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RDFZXN6B79');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kết nối thể thao - Tìm đồng đội. Ra sân. Vui khỏe.</title>
+  <meta name="description" content="Nền tảng kết nối người chơi thể thao ngoài trời. Tìm đối tác phù hợp theo môn thể thao, trình độ, địa điểm và thời gian.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Kết nối thể thao - Tìm đồng đội. Ra sân. Vui khỏe.">
+  <meta property="og:description" content="Nền tảng kết nối người chơi thể thao ngoài trời. Tìm đối tác phù hợp theo môn thể thao, trình độ, địa điểm và thời gian.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ketnoithethao.com">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&h=630&fit=crop">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://ketnoithethao.com">
+
+  <!-- Preconnect to speed up Google Fonts + safe font fallback behavior -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Google Fonts (display=swap để không chặn render). 
+       Giữ chỉ những weight bạn dùng để giảm kích thước. -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Preload & load CSS Tailwind đã build (static) -->
+  <!-- Đổi href nếu bạn đặt file ở chỗ khác -->
+  <link rel="preload" href="/assets/output.css" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/assets/output.css"></noscript>
+
+  <!-- (Optional) small critical CSS: giúp hiển thị phần đầu trang ngay, tránh FOUC -->
+  <style>
+    /* minimal critical rules - chỉnh theo layout nếu muốn */
+    html { -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+    body { margin: 0; font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; background: #fff; color: #111827; }
+    /* giữ lại các CSS nhỏ bạn cần render ngay (ví dụ header layout) */
+    header { display: flex; align-items: center; justify-content: space-between; padding: 1rem; }
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .btn-hover { transition: all 0.3s ease; }
+    .btn-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0, 102, 255, 0.12); }
+  </style>
+
+  <!-- JSON-LD (schema) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Kết nối thể thao",
+    "url": "https://ketnoithethao.com",
+    "description": "Nền tảng kết nối người chơi thể thao ngoài trời",
+    "sameAs": [
+      "https://facebook.com/ketnoithethao",
+      "https://instagram.com/ketnoithethao"
+    ]
+  }
+  </script>
+  
+  <!-- NOTE: Heroicons (module) tốt nhất đặt trước </body> để tránh tải sớm trong head.
+       Nếu bạn cần dùng icon ngay trong phần đầu trang, để ở đây OK (module tải defer theo mặc định). -->
 </head>
+
 <body class="font-sans bg-neutral text-gray-800">
     <!-- Header -->
     <header class="bg-white shadow-sm sticky top-0 z-50">
