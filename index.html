@@ -12,7 +12,7 @@
      </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kết Nối Đam Mê - Tìm Bạn Chơi Cầu Lông, Bóng Đá, Pickle Ball, Bóng Chuyển, Đá Cầu | Cộng Đồng Thể Thao</title>
+    <title>Kết Nối Đam Mê - Tìm Đối Tác Hoàn Hảo | Cộng Đồng Thể Thao</title>
     <meta name="description" content="Nền tảng kết nối người chơi thể thao hàng đầu Việt Nam. Tìm đối tác hoàn hảo, tham gia giải đấu và xây dựng cộng đồng thể thao sôi động.">
     
     <!-- Open Graph -->
@@ -514,6 +514,69 @@
             }
         }
 
+        /* Product Cards */
+        .product-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 191, 255, 0.3);
+        }
+
+        .product-card .badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 2;
+        }
+
+        .product-card .discount-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(45deg, #FF6B6B, #FF8E53);
+            z-index: 2;
+        }
+
+        .product-card img {
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .price-original {
+            text-decoration: line-through;
+            color: #999;
+        }
+
+        .price-sale {
+            color: var(--energy-green);
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        /* Flash Sale Timer */
+        .flash-timer {
+            background: linear-gradient(45deg, #FF6B6B, #FF8E53);
+            animation: pulse-glow 2s infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 107, 107, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(255, 107, 107, 0.8); }
+        }
+
         /* Loading Animation */
         .loading {
             display: inline-block;
@@ -573,6 +636,11 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="#tournaments">Giải Đấu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#marketplace">
+                            <i class="fas fa-shopping-cart"></i> Mua Sắm
+                        </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="#community">Cộng Đồng</a>
@@ -777,6 +845,101 @@
                 </button>
                 <button class="carousel-control-next" type="button" data-bs-target="#tournamentCarousel" data-bs-slide="next">
                     <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sports Marketplace Section -->
+    <section id="marketplace" class="py-5" style="background: linear-gradient(135deg, rgba(0,191,255,0.1) 0%, rgba(50,205,50,0.1) 100%);">
+        <div class="container">
+            <div class="text-center mb-5 fade-in">
+                <h2 class="display-4 fw-bold mb-3">
+                    <i class="fas fa-shopping-cart text-warning"></i> Chợ Đồ Thể Thao
+                </h2>
+                <p class="lead">Mua sắm đồ thể thao chính hãng với giá tốt nhất - Giao hàng toàn quốc</p>
+                <div class="d-flex justify-content-center gap-3 flex-wrap">
+                    <span class="badge bg-success fs-6 px-3 py-2">🚚 Miễn phí ship từ 500k</span>
+                    <span class="badge bg-warning fs-6 px-3 py-2">⚡ Giao hàng nhanh 2h</span>
+                    <span class="badge bg-info fs-6 px-3 py-2">🔄 Đổi trả 30 ngày</span>
+                </div>
+            </div>
+
+            <!-- Hot Deals Banner -->
+            <div class="row mb-5">
+                <div class="col-12">
+                    <div class="glass-card text-center fade-in" style="background: linear-gradient(45deg, #FF6B6B, #FF8E53); border: none;">
+                        <h3 class="fw-bold mb-3">🔥 FLASH SALE - Chỉ còn 2 giờ!</h3>
+                        <div class="row g-3">
+                            <div class="col-6 col-md-3">
+                                <div class="text-center">
+                                    <div class="fs-2 fw-bold" id="hours">02</div>
+                                    <small>Giờ</small>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="text-center">
+                                    <div class="fs-2 fw-bold" id="minutes">45</div>
+                                    <small>Phút</small>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="text-center">
+                                    <div class="fs-2 fw-bold" id="seconds">30</div>
+                                    <small>Giây</small>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <button class="btn btn-light btn-lg fw-bold text-danger">
+                                    Mua Ngay!
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Categories -->
+            <div class="row g-4 mb-5">
+                <div class="col-6 col-md-3 fade-in">
+                    <div class="glass-card text-center h-100" style="cursor: pointer;" onclick="filterProducts('shoes')">
+                        <i class="fas fa-shoe-prints fs-1 text-primary mb-3"></i>
+                        <h5>Giày Thể Thao</h5>
+                        <p class="small text-muted">Nike, Adidas, Puma...</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 fade-in">
+                    <div class="glass-card text-center h-100" style="cursor: pointer;" onclick="filterProducts('clothes')">
+                        <i class="fas fa-tshirt fs-1 text-success mb-3"></i>
+                        <h5>Quần Áo</h5>
+                        <p class="small text-muted">Áo, quần, đồ bộ...</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 fade-in">
+                    <div class="glass-card text-center h-100" style="cursor: pointer;" onclick="filterProducts('equipment')">
+                        <i class="fas fa-dumbbell fs-1 text-warning mb-3"></i>
+                        <h5>Dụng Cụ</h5>
+                        <p class="small text-muted">Vợt, bóng, tạ...</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 fade-in">
+                    <div class="glass-card text-center h-100" style="cursor: pointer;" onclick="filterProducts('accessories')">
+                        <i class="fas fa-stopwatch fs-1 text-info mb-3"></i>
+                        <h5>Phụ Kiện</h5>
+                        <p class="small text-muted">Đồng hồ, túi, băng...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Products -->
+            <div class="row g-4" id="productsGrid">
+                <!-- Products will be populated by JavaScript -->
+            </div>
+
+            <!-- View More Button -->
+            <div class="text-center mt-5 fade-in">
+                <button class="btn glow-btn btn-lg" onclick="loadMoreProducts()">
+                    <i class="fas fa-plus"></i> Xem Thêm Sản Phẩm
                 </button>
             </div>
         </div>
@@ -1047,6 +1210,241 @@
             },
             retina_detect: true
         });
+
+        // Sample products data
+        const products = [
+            {
+                id: 1,
+                name: "Giày Nike Air Max 270",
+                category: "shoes",
+                image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=300&fit=crop",
+                originalPrice: 2500000,
+                salePrice: 1990000,
+                discount: 20,
+                rating: 4.8,
+                reviews: 156,
+                badge: "Bán chạy",
+                description: "Giày thể thao nam Nike Air Max 270 chính hãng"
+            },
+            {
+                id: 2,
+                name: "Áo Adidas Training",
+                category: "clothes",
+                image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=300&fit=crop",
+                originalPrice: 890000,
+                salePrice: 690000,
+                discount: 22,
+                rating: 4.6,
+                reviews: 89,
+                badge: "Mới",
+                description: "Áo thun thể thao Adidas chất liệu thoáng mát"
+            },
+            {
+                id: 3,
+                name: "Vợt Cầu Lông Yonex",
+                category: "equipment",
+                image: "https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=400&h=300&fit=crop",
+                originalPrice: 1200000,
+                salePrice: 950000,
+                discount: 21,
+                rating: 4.9,
+                reviews: 234,
+                badge: "Pro",
+                description: "Vợt cầu lông Yonex chuyên nghiệp"
+            },
+            {
+                id: 4,
+                name: "Đồng Hồ Thể Thao Garmin",
+                category: "accessories",
+                image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=300&fit=crop",
+                originalPrice: 5500000,
+                salePrice: 4200000,
+                discount: 24,
+                rating: 4.7,
+                reviews: 67,
+                badge: "Hot",
+                description: "Đồng hồ thông minh theo dõi sức khỏe"
+            },
+            {
+                id: 5,
+                name: "Quần Short Nike Dri-FIT",
+                category: "clothes",
+                image: "https://images.unsplash.com/photo-1506629905607-d405b7a82d52?w=400&h=300&fit=crop",
+                originalPrice: 650000,
+                salePrice: 490000,
+                discount: 25,
+                rating: 4.5,
+                reviews: 123,
+                badge: "Sale",
+                description: "Quần short thể thao Nike công nghệ Dri-FIT"
+            },
+            {
+                id: 6,
+                name: "Bóng Đá FIFA Quality",
+                category: "equipment",
+                image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400&h=300&fit=crop",
+                originalPrice: 450000,
+                salePrice: 350000,
+                discount: 22,
+                rating: 4.4,
+                reviews: 78,
+                badge: "Chất lượng",
+                description: "Bóng đá FIFA Quality Pro chính thức"
+            }
+        ];
+
+        let currentProducts = products.slice(0, 6);
+        let currentCategory = 'all';
+
+        // Render products
+        function renderProducts(productsToRender = currentProducts) {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = productsToRender.map(product => `
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="product-card h-100">
+                        <div class="position-relative">
+                            <img src="${product.image}" alt="${product.name}" class="w-100">
+                            <span class="badge bg-primary">${product.badge}</span>
+                            <span class="badge discount-badge">-${product.discount}%</span>
+                        </div>
+                        <div class="p-3">
+                            <h6 class="fw-bold mb-2">${product.name}</h6>
+                            <p class="small text-muted mb-2">${product.description}</p>
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="text-warning me-2">
+                                    ${'★'.repeat(Math.floor(product.rating))}${'☆'.repeat(5-Math.floor(product.rating))}
+                                </div>
+                                <small class="text-muted">(${product.reviews})</small>
+                            </div>
+                            <div class="mb-3">
+                                <span class="price-original small">${product.originalPrice.toLocaleString()}đ</span>
+                                <div class="price-sale">${product.salePrice.toLocaleString()}đ</div>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-outline-light btn-sm flex-grow-1" onclick="addToCart(${product.id}, this)">
+                                    <i class="fas fa-cart-plus"></i> Thêm
+                                </button>
+                                <button class="btn glow-btn btn-sm" onclick="buyNow(${product.id}, this)">
+                                    Mua
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Filter products by category
+        function filterProducts(category) {
+            currentCategory = category;
+            const filteredProducts = category === 'all' ? products : products.filter(p => p.category === category);
+            renderProducts(filteredProducts);
+            
+            // Visual feedback
+            document.querySelectorAll('.glass-card').forEach(card => {
+                card.style.transform = 'scale(1)';
+                card.style.boxShadow = '';
+            });
+            
+            event.target.closest('.glass-card').style.transform = 'scale(1.05)';
+            event.target.closest('.glass-card').style.boxShadow = '0 0 30px rgba(0, 191, 255, 0.5)';
+        }
+
+        // Add to cart with animation
+        function addToCart(productId, button) {
+            const rect = button.getBoundingClientRect();
+            createParticleBurst(rect.left + rect.width/2, rect.top + rect.height/2);
+            
+            button.innerHTML = '<i class="fas fa-check"></i> Đã thêm';
+            button.classList.add('btn-success');
+            button.disabled = true;
+            
+            setTimeout(() => {
+                button.innerHTML = '<i class="fas fa-cart-plus"></i> Thêm';
+                button.classList.remove('btn-success');
+                button.disabled = false;
+            }, 2000);
+            
+            showToast('Đã thêm sản phẩm vào giỏ hàng!', 'success');
+        }
+
+        // Buy now with confetti
+        function buyNow(productId, button) {
+            createConfetti();
+            showToast('Chuyển hướng đến trang thanh toán...', 'info');
+            
+            // Simulate redirect
+            setTimeout(() => {
+                showToast('Demo: Tính năng thanh toán đang được phát triển!', 'info');
+            }, 1500);
+        }
+
+        // Load more products
+        function loadMoreProducts() {
+            const moreProducts = [
+                {
+                    id: 7,
+                    name: "Túi Gym Under Armour",
+                    category: "accessories",
+                    image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=300&fit=crop",
+                    originalPrice: 890000,
+                    salePrice: 690000,
+                    discount: 22,
+                    rating: 4.3,
+                    reviews: 45,
+                    badge: "Tiện lợi",
+                    description: "Túi tập gym Under Armour chống nước"
+                },
+                {
+                    id: 8,
+                    name: "Giày Puma Running",
+                    category: "shoes",
+                    image: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400&h=300&fit=crop",
+                    originalPrice: 1800000,
+                    salePrice: 1350000,
+                    discount: 25,
+                    rating: 4.6,
+                    reviews: 92,
+                    badge: "Nhẹ",
+                    description: "Giày chạy bộ Puma siêu nhẹ"
+                }
+            ];
+            
+            currentProducts = [...currentProducts, ...moreProducts];
+            renderProducts(currentProducts);
+            showToast('Đã tải thêm sản phẩm!', 'success');
+        }
+
+        // Flash sale countdown timer
+        function startFlashSaleTimer() {
+            let hours = 2;
+            let minutes = 45;
+            let seconds = 30;
+            
+            const timer = setInterval(() => {
+                seconds--;
+                
+                if (seconds < 0) {
+                    seconds = 59;
+                    minutes--;
+                }
+                
+                if (minutes < 0) {
+                    minutes = 59;
+                    hours--;
+                }
+                
+                if (hours < 0) {
+                    clearInterval(timer);
+                    showToast('Flash Sale đã kết thúc! Cảm ơn bạn đã tham gia.', 'info');
+                    return;
+                }
+                
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            }, 1000);
+        }
 
         // Sample friend posts data
         const friendPosts = [
@@ -1328,6 +1726,8 @@
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             renderFriendPosts();
+            renderProducts();
+            startFlashSaleTimer();
             
             // Observe fade-in elements
             document.querySelectorAll('.fade-in').forEach(el => {
@@ -1392,5 +1792,15 @@
         images.forEach(img => imageObserver.observe(img));
     </script>
 
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'970fc4bbb7cd0445',t:'MTc1NTUwMjg4My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+    <!-- Google Analytics (Optional) -->
+    <!-- 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+    -->
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97107af6a7afdd5f',t:'MTc1NTUxMDM0Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
