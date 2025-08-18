@@ -177,8 +177,23 @@
             position: relative;
             display: flex;
             align-items: center;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1920&h=1080&fit=crop') center/cover;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4));
             background-attachment: fixed;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .hero-bg.loaded {
+            opacity: 1;
         }
 
         .hero-content {
@@ -592,6 +607,65 @@
             to { transform: rotate(360deg); }
         }
 
+        /* Lazy Loading Styles */
+        .lazy {
+            opacity: 0;
+            transition: opacity 0.3s;
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading-shimmer 1.5s infinite;
+        }
+
+        .lazy.loaded {
+            opacity: 1;
+        }
+
+        @keyframes loading-shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        /* Image Optimization */
+        .optimized-img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .img-placeholder {
+            background: linear-gradient(135deg, rgba(0,191,255,0.1), rgba(50,205,50,0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 2rem;
+        }
+
+        /* Progressive Image Loading */
+        .progressive-img {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progressive-img .img-small {
+            filter: blur(5px);
+            transform: scale(1.1);
+            transition: all 0.3s ease;
+        }
+
+        .progressive-img .img-large {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .progressive-img .img-large.loaded {
+            opacity: 1;
+        }
+
         /* Success Animation */
         .success-checkmark {
             width: 80px;
@@ -658,6 +732,14 @@
 
     <!-- Hero Section -->
     <section class="hero">
+        <!-- Lazy loaded background -->
+        <div class="hero-bg">
+            <img data-src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1920&h=1080&fit=crop&auto=format&q=80" 
+                 alt="Hero Background" 
+                 class="optimized-img lazy" 
+                 style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 hero-content">
@@ -791,7 +873,15 @@
                         <div class="row g-4">
                             <div class="col-12 col-sm-6 col-md-4">
                                 <div class="tournament-card">
-                                    <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400&h=200&fit=crop" alt="Giải bóng đá" class="w-100">
+                                    <div class="progressive-img" style="height: 200px;">
+                                        <img data-src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400&h=200&fit=crop&auto=format&q=80" 
+                                             alt="Giải bóng đá" 
+                                             class="optimized-img lazy w-100" 
+                                             style="height: 200px;">
+                                        <div class="img-placeholder" style="height: 200px;">
+                                            <i class="fas fa-futbol"></i>
+                                        </div>
+                                    </div>
                                     <div class="p-3 p-md-4">
                                         <h5 class="fw-bold">🏆 Giải Bóng Đá Mùa Xuân</h5>
                                         <p class="text-muted mb-2 small">📅 15/02/2024 • 📍 Sân Mỹ Đình</p>
@@ -807,7 +897,15 @@
                             </div>
                             <div class="col-12 col-sm-6 col-md-4">
                                 <div class="tournament-card">
-                                    <img src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=400&h=200&fit=crop" alt="Giải cầu lông" class="w-100">
+                                    <div class="progressive-img" style="height: 200px;">
+                                        <img data-src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=400&h=200&fit=crop&auto=format&q=80" 
+                                             alt="Giải cầu lông" 
+                                             class="optimized-img lazy w-100" 
+                                             style="height: 200px;">
+                                        <div class="img-placeholder" style="height: 200px;">
+                                            <i class="fas fa-table-tennis"></i>
+                                        </div>
+                                    </div>
                                     <div class="p-3 p-md-4">
                                         <h5 class="fw-bold">🏸 Cầu Lông Championship</h5>
                                         <p class="text-muted mb-2 small">📅 20/02/2024 • 📍 Cung thể thao</p>
@@ -823,7 +921,15 @@
                             </div>
                             <div class="col-12 col-sm-6 col-md-4">
                                 <div class="tournament-card">
-                                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=200&fit=crop" alt="Marathon" class="w-100">
+                                    <div class="progressive-img" style="height: 200px;">
+                                        <img data-src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=200&fit=crop&auto=format&q=80" 
+                                             alt="Marathon" 
+                                             class="optimized-img lazy w-100" 
+                                             style="height: 200px;">
+                                        <div class="img-placeholder" style="height: 200px;">
+                                            <i class="fas fa-running"></i>
+                                        </div>
+                                    </div>
                                     <div class="p-3 p-md-4">
                                         <h5 class="fw-bold">🏃 Marathon Hà Nội</h5>
                                         <p class="text-muted mb-2 small">📅 25/02/2024 • 📍 Hồ Gươm</p>
@@ -977,8 +1083,12 @@
             <div class="row g-4">
                 <div class="col-12 col-sm-6 col-md-4 fade-in">
                     <div class="testimonial-card">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" 
-                             alt="Minh Tuấn" class="rounded-circle mb-3" width="80" height="80">
+                        <img data-src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face&auto=format&q=80" 
+                             alt="Minh Tuấn" 
+                             class="rounded-circle mb-3 lazy" 
+                             width="80" 
+                             height="80"
+                             style="background: linear-gradient(135deg, rgba(0,191,255,0.2), rgba(50,205,50,0.2));">
                         <h5>Minh Tuấn</h5>
                         <p class="text-muted small">Runner • Hà Nội</p>
                         <p class="small">"Nhờ nền tảng này, tôi đã tìm được nhóm chạy bộ tuyệt vời và hoàn thành marathon đầu tiên!"</p>
@@ -993,8 +1103,12 @@
                 </div>
                 <div class="col-12 col-sm-6 col-md-4 fade-in">
                     <div class="testimonial-card">
-                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&h=80&fit=crop&crop=face" 
-                             alt="Thu Hà" class="rounded-circle mb-3" width="80" height="80">
+                        <img data-src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&h=80&fit=crop&crop=face&auto=format&q=80" 
+                             alt="Thu Hà" 
+                             class="rounded-circle mb-3 lazy" 
+                             width="80" 
+                             height="80"
+                             style="background: linear-gradient(135deg, rgba(0,191,255,0.2), rgba(50,205,50,0.2));">
                         <h5>Thu Hà</h5>
                         <p class="text-muted small">Tennis Player • TP.HCM</p>
                         <p class="small">"Tìm được đối tác tennis cùng trình độ thật dễ dàng. Giờ tôi chơi tennis mỗi ngày!"</p>
@@ -1009,8 +1123,12 @@
                 </div>
                 <div class="col-12 col-sm-6 col-md-4 fade-in">
                     <div class="testimonial-card">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face" 
-                             alt="Đức Anh" class="rounded-circle mb-3" width="80" height="80">
+                        <img data-src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face&auto=format&q=80" 
+                             alt="Đức Anh" 
+                             class="rounded-circle mb-3 lazy" 
+                             width="80" 
+                             height="80"
+                             style="background: linear-gradient(135deg, rgba(0,191,255,0.2), rgba(50,205,50,0.2));">
                         <h5>Đức Anh</h5>
                         <p class="text-muted small">Football Player • Đà Nẵng</p>
                         <p class="small">"Đội bóng của tôi được thành lập từ app này. Chúng tôi đã vô địch giải địa phương!"</p>
@@ -1201,13 +1319,14 @@
             retina_detect: true
         });
 
-        // Sample products data
+        // Sample products data with optimized images
         const products = [
             {
                 id: 1,
                 name: "Giày Nike Air Max 270",
                 category: "shoes",
-                image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=300&fit=crop",
+                image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=300&fit=crop&auto=format&q=80",
+                placeholder: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=50&h=38&fit=crop&auto=format&q=20",
                 originalPrice: 2500000,
                 salePrice: 1990000,
                 discount: 20,
@@ -1220,7 +1339,8 @@
                 id: 2,
                 name: "Áo Adidas Training",
                 category: "clothes",
-                image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=300&fit=crop",
+                image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=300&fit=crop&auto=format&q=80",
+                placeholder: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=50&h=38&fit=crop&auto=format&q=20",
                 originalPrice: 890000,
                 salePrice: 690000,
                 discount: 22,
@@ -1233,7 +1353,8 @@
                 id: 3,
                 name: "Vợt Cầu Lông Yonex",
                 category: "equipment",
-                image: "https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=400&h=300&fit=crop",
+                image: "https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=400&h=300&fit=crop&auto=format&q=80",
+                placeholder: "https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=50&h=38&fit=crop&auto=format&q=20",
                 originalPrice: 1200000,
                 salePrice: 950000,
                 discount: 21,
@@ -1246,7 +1367,8 @@
                 id: 4,
                 name: "Đồng Hồ Thể Thao Garmin",
                 category: "accessories",
-                image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=300&fit=crop",
+                image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=300&fit=crop&auto=format&q=80",
+                placeholder: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=50&h=38&fit=crop&auto=format&q=20",
                 originalPrice: 5500000,
                 salePrice: 4200000,
                 discount: 24,
@@ -1259,7 +1381,8 @@
                 id: 5,
                 name: "Quần Short Nike Dri-FIT",
                 category: "clothes",
-                image: "https://images.unsplash.com/photo-1506629905607-d405b7a82d52?w=400&h=300&fit=crop",
+                image: "https://images.unsplash.com/photo-1506629905607-d405b7a82d52?w=400&h=300&fit=crop&auto=format&q=80",
+                placeholder: "https://images.unsplash.com/photo-1506629905607-d405b7a82d52?w=50&h=38&fit=crop&auto=format&q=20",
                 originalPrice: 650000,
                 salePrice: 490000,
                 discount: 25,
@@ -1272,7 +1395,8 @@
                 id: 6,
                 name: "Bóng Đá FIFA Quality",
                 category: "equipment",
-                image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400&h=300&fit=crop",
+                image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400&h=300&fit=crop&auto=format&q=80",
+                placeholder: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=50&h=38&fit=crop&auto=format&q=20",
                 originalPrice: 450000,
                 salePrice: 350000,
                 discount: 22,
@@ -1286,14 +1410,22 @@
         let currentProducts = products.slice(0, 6);
         let currentCategory = 'all';
 
-        // Render products
+        // Render products with lazy loading
         function renderProducts(productsToRender = currentProducts) {
             const grid = document.getElementById('productsGrid');
             grid.innerHTML = productsToRender.map(product => `
                 <div class="col-6 col-md-4 col-lg-3">
                     <div class="product-card h-100">
-                        <div class="position-relative">
-                            <img src="${product.image}" alt="${product.name}" class="w-100">
+                        <div class="position-relative progressive-img" style="height: 200px;">
+                            <img src="${product.placeholder}" 
+                                 data-src="${product.image}" 
+                                 alt="${product.name}" 
+                                 class="optimized-img lazy w-100 img-small" 
+                                 style="height: 200px;">
+                            <img data-src="${product.image}" 
+                                 alt="${product.name}" 
+                                 class="optimized-img w-100 img-large" 
+                                 style="height: 200px;">
                             <span class="badge bg-primary">${product.badge}</span>
                             <span class="badge discount-badge">-${product.discount}%</span>
                         </div>
@@ -1322,6 +1454,9 @@
                     </div>
                 </div>
             `).join('');
+            
+            // Initialize lazy loading for new products
+            initializeLazyLoading();
         }
 
         // Filter products by category
@@ -1436,12 +1571,12 @@
             }, 1000);
         }
 
-        // Sample friend posts data
+        // Sample friend posts data with optimized images
         const friendPosts = [
             {
                 id: 1,
                 author: "Minh Anh",
-                avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=60&h=60&fit=crop&crop=face",
+                avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=60&h=60&fit=crop&crop=face&auto=format&q=80",
                 sport: "🎾 Tennis",
                 title: "Tìm bạn chơi tennis cuối tuần",
                 content: "Mình chơi tennis được 2 năm, muốn tìm bạn cùng trình độ để luyện tập đều đặn.",
@@ -1453,7 +1588,7 @@
             {
                 id: 2,
                 author: "Đức Thành",
-                avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face",
+                avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face&auto=format&q=80",
                 sport: "⚽ Bóng đá",
                 title: "Cần thêm 2 người cho đội bóng",
                 content: "Đội mình thiếu 2 tiền vệ. Chơi thường xuyên, có HLV hướng dẫn.",
@@ -1465,7 +1600,7 @@
             {
                 id: 3,
                 author: "Thu Hương",
-                avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=60&h=60&fit=crop&crop=face",
+                avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=60&h=60&fit=crop&crop=face&auto=format&q=80",
                 sport: "🏃 Chạy bộ",
                 title: "Nhóm chạy bộ sáng sớm",
                 content: "Nhóm chạy bộ thân thiện, cùng nhau động viên và tiến bộ!",
@@ -1476,14 +1611,19 @@
             }
         ];
 
-        // Render friend posts
+        // Render friend posts with lazy loading
         function renderFriendPosts() {
             const grid = document.getElementById('friendPostsGrid');
             grid.innerHTML = friendPosts.map(post => `
                 <div class="col-md-6 col-lg-4">
                     <div class="friend-card">
                         <div class="d-flex align-items-center mb-3">
-                            <img src="${post.avatar}" alt="${post.author}" class="rounded-circle me-3" width="50" height="50">
+                            <img data-src="${post.avatar}" 
+                                 alt="${post.author}" 
+                                 class="rounded-circle me-3 lazy" 
+                                 width="50" 
+                                 height="50"
+                                 style="background: linear-gradient(135deg, rgba(0,191,255,0.2), rgba(50,205,50,0.2));">
                             <div>
                                 <h6 class="mb-0">${post.author}</h6>
                                 <small class="text-muted">${post.time}</small>
@@ -1511,6 +1651,9 @@
                     </div>
                 </div>
             `).join('');
+            
+            // Initialize lazy loading for friend posts
+            initializeLazyLoading();
         }
 
         // Like post with particle burst effect
@@ -1715,6 +1858,13 @@
 
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
+            // Preload critical images first
+            preloadCriticalImages();
+            
+            // Initialize lazy loading system
+            initializeLazyLoading();
+            
+            // Render content
             renderFriendPosts();
             renderProducts();
             startFlashSaleTimer();
@@ -1734,6 +1884,23 @@
                 
                 setTimeout(() => sparkle.remove(), 2000);
             }, 3000);
+            
+            // Performance monitoring
+            if ('performance' in window) {
+                window.addEventListener('load', () => {
+                    const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+                    console.log(`🚀 Trang web tải xong trong ${loadTime}ms`);
+                    
+                    // Show performance notification for development
+                    if (loadTime < 3000) {
+                        console.log('✅ Tốc độ tải trang: Xuất sắc!');
+                    } else if (loadTime < 5000) {
+                        console.log('⚡ Tốc độ tải trang: Tốt');
+                    } else {
+                        console.log('⏰ Tốc độ tải trang: Cần cải thiện');
+                    }
+                });
+            }
         });
 
         // Touch gestures for mobile
@@ -1766,20 +1933,121 @@
             }
         }
 
-        // Performance optimization - lazy loading
-        const images = document.querySelectorAll('img[data-src]');
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src;
-                    img.classList.remove('lazy');
-                    imageObserver.unobserve(img);
+        // Advanced Lazy Loading System
+        let lazyImageObserver;
+        
+        function initializeLazyLoading() {
+            if ('IntersectionObserver' in window) {
+                lazyImageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            loadImage(img);
+                            observer.unobserve(img);
+                        }
+                    });
+                }, {
+                    rootMargin: '50px 0px',
+                    threshold: 0.01
+                });
+
+                // Observe all lazy images
+                document.querySelectorAll('img[data-src]').forEach(img => {
+                    lazyImageObserver.observe(img);
+                });
+            } else {
+                // Fallback for older browsers
+                document.querySelectorAll('img[data-src]').forEach(img => {
+                    loadImage(img);
+                });
+            }
+        }
+
+        function loadImage(img) {
+            // Create a new image to preload
+            const imageLoader = new Image();
+            
+            imageLoader.onload = function() {
+                // Image loaded successfully
+                img.src = img.dataset.src;
+                img.classList.remove('lazy');
+                img.classList.add('loaded');
+                
+                // Handle progressive loading for product images
+                if (img.classList.contains('img-large')) {
+                    img.classList.add('loaded');
+                    // Hide the blurred small image
+                    const smallImg = img.parentElement.querySelector('.img-small');
+                    if (smallImg) {
+                        smallImg.style.opacity = '0';
+                    }
+                }
+                
+                // Handle hero background
+                if (img.closest('.hero-bg')) {
+                    img.closest('.hero-bg').classList.add('loaded');
+                }
+            };
+            
+            imageLoader.onerror = function() {
+                // Handle error - show placeholder
+                img.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlIG5vdCBhdmFpbGFibGU8L3RleHQ+PC9zdmc+';
+                img.classList.remove('lazy');
+                img.classList.add('error');
+            };
+            
+            // Start loading
+            imageLoader.src = img.dataset.src;
+        }
+
+        // Preload critical images
+        function preloadCriticalImages() {
+            const criticalImages = [
+                'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1920&h=1080&fit=crop&auto=format&q=80'
+            ];
+            
+            criticalImages.forEach(src => {
+                const link = document.createElement('link');
+                link.rel = 'preload';
+                link.as = 'image';
+                link.href = src;
+                document.head.appendChild(link);
+            });
+        }
+
+        // Image optimization utilities
+        function getOptimizedImageUrl(baseUrl, width, height, quality = 80) {
+            if (baseUrl.includes('unsplash.com')) {
+                return `${baseUrl}&w=${width}&h=${height}&fit=crop&auto=format&q=${quality}`;
+            }
+            return baseUrl;
+        }
+
+        // Responsive image loading based on device
+        function getResponsiveImageSize() {
+            const screenWidth = window.innerWidth;
+            if (screenWidth <= 576) return { width: 300, height: 225 };
+            if (screenWidth <= 768) return { width: 400, height: 300 };
+            if (screenWidth <= 992) return { width: 500, height: 375 };
+            return { width: 600, height: 450 };
+        }
+
+        // Update image sources for current viewport
+        function updateImageSources() {
+            const size = getResponsiveImageSize();
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                if (img.dataset.originalSrc) {
+                    img.dataset.src = getOptimizedImageUrl(img.dataset.originalSrc, size.width, size.height);
                 }
             });
-        });
+        }
 
-        images.forEach(img => imageObserver.observe(img));
+        // Debounced resize handler
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(updateImageSources, 250);
+        });
     </script>
 
     <!-- Google Analytics (Optional) -->
@@ -1792,5 +2060,5 @@
         gtag('config', 'GA_MEASUREMENT_ID');
     </script>
     -->
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97107af6a7afdd5f',t:'MTc1NTUxMDM0Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97109ab6546e0484',t:'MTc1NTUxMTY0OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
