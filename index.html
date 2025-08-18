@@ -15,37 +15,15 @@
     <title>Kết Nối Đam Mê - Tìm Đối Tác Hoàn Hảo | Cộng Đồng Thể Thao</title>
     <meta name="description" content="Nền tảng kết nối người chơi thể thao hàng đầu Việt Nam. Tìm đối tác hoàn hảo, tham gia giải đấu và xây dựng cộng đồng thể thao sôi động.">
     
-    <!-- Open Graph -->
-    <meta property="og:title" content="Kết Nối Đam Mê - Tìm Đối Tác Hoàn Hảo">
-    <meta property="og:description" content="Nền tảng kết nối người chơi thể thao hàng đầu Việt Nam">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&h=630&fit=crop">
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     
-    <!-- Schema Markup -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Kết Nối Đam Mê",
-        "url": "https://ketnoithedao.com",
-        "description": "Nền tảng kết nối người chơi thể thao",
-        "sameAs": ["https://facebook.com/ketnoithedao", "https://instagram.com/ketnoithedao"]
-    }
-    </script>
-    
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
-    
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Particles.js -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    
+    <!-- Critical CSS inline -->
     <style>
+        /* Critical CSS - Above the fold only */
         :root {
             --primary-blue: #00BFFF;
             --energy-green: #32CD32;
@@ -61,42 +39,76 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #001122 0%, #003366 50%, #004d00 100%);
             color: white;
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        /* Particles Background */
-        #particles-js {
-            position: fixed;
-            width: 100%;
-            height: 100%;
+        /* Hero Section - Critical */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4));
+            background-attachment: fixed;
+        }
+
+        .hero-bg {
+            position: absolute;
             top: 0;
             left: 0;
+            width: 100%;
+            height: 100%;
             z-index: -1;
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyMCIgaGVpZ2h0PSIxMDgwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iYSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6IzAwMTEyMiIvPjxzdG9wIG9mZnNldD0iNTAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMDAzMzY2Ii8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMDA0ZDAwIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNhKSIvPjwvc3ZnPg==') center/cover;
+            opacity: 0;
+            transition: opacity 1s ease;
         }
 
-        /* Sparkling Animation */
-        @keyframes sparkle {
-            0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
-            50% { opacity: 1; transform: scale(1) rotate(180deg); }
+        .hero-bg.loaded {
+            opacity: 1;
         }
 
-        .sparkle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: var(--gold-accent);
-            border-radius: 50%;
-            animation: sparkle 2s infinite;
+        .hero-content {
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
-        .sparkle:nth-child(2n) { animation-delay: 0.5s; }
-        .sparkle:nth-child(3n) { animation-delay: 1s; }
-        .sparkle:nth-child(4n) { animation-delay: 1.5s; }
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--primary-blue), var(--gold-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
 
-        /* Glow Effects */
+        @keyframes glow {
+            from { 
+                text-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
+                filter: drop-shadow(0 0 10px rgba(0, 191, 255, 0.3));
+            }
+            to { 
+                text-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+                filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.5));
+            }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        /* Glow Button */
         .glow-btn {
             background: linear-gradient(45deg, var(--primary-blue), var(--gold-accent));
             border: none;
@@ -110,6 +122,9 @@
             overflow: hidden;
             transition: all 0.3s ease;
             box-shadow: 0 0 20px rgba(0, 191, 255, 0.3);
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
         }
 
         .glow-btn:hover {
@@ -133,6 +148,585 @@
             left: 100%;
         }
 
+        /* Navigation */
+        .navbar {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            padding: 20px 0;
+            transition: all 0.3s ease;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar.scrolled {
+            background: rgba(0, 0, 0, 0.95);
+            padding: 10px 0;
+        }
+
+        .navbar-brand {
+            font-weight: 900;
+            font-size: 1.8rem;
+            background: linear-gradient(45deg, var(--primary-blue), var(--energy-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-link {
+            color: white !important;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-blue) !important;
+        }
+
+        /* Container and Grid */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: -15px;
+        }
+
+        .col-12 { flex: 0 0 100%; }
+        .col-6 { flex: 0 0 50%; }
+        .col-4 { flex: 0 0 33.333%; }
+        .col-3 { flex: 0 0 25%; }
+
+        @media (min-width: 768px) {
+            .col-md-6 { flex: 0 0 50%; }
+            .col-md-4 { flex: 0 0 33.333%; }
+            .col-md-3 { flex: 0 0 25%; }
+        }
+
+        @media (min-width: 992px) {
+            .col-lg-8 { flex: 0 0 66.667%; }
+            .col-lg-6 { flex: 0 0 50%; }
+            .col-lg-4 { flex: 0 0 33.333%; }
+            .col-lg-3 { flex: 0 0 25%; }
+        }
+
+        [class*="col-"] {
+            padding: 15px;
+        }
+
+        /* Utility Classes */
+        .text-center { text-align: center; }
+        .d-flex { display: flex; }
+        .justify-content-center { justify-content: center; }
+        .align-items-center { align-items: center; }
+        .py-5 { padding: 80px 0; }
+        .mb-5 { margin-bottom: 50px; }
+        .mb-3 { margin-bottom: 20px; }
+        .fw-bold { font-weight: 700; }
+        .display-4 { font-size: 2.5rem; }
+        .lead { font-size: 1.25rem; }
+
+        /* Loading States */
+        .lazy {
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .lazy.loaded {
+            opacity: 1;
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .hero {
+                height: 100vh;
+                padding: 0 15px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+                line-height: 1.2;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .glow-btn {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            
+            .navbar-brand {
+                font-size: 1.4rem;
+            }
+            
+            .display-4 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+        }
+    </style>
+
+    <!-- Preload critical font -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap"></noscript>
+</head>
+<body>
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center" style="width: 100%;">
+                <a class="navbar-brand" href="#">
+                    <i class="fas fa-running"></i> Kết Nối Đam Mê
+                </a>
+                <div class="d-flex align-items-center" style="gap: 30px;">
+                    <a class="nav-link" href="#search">Tìm Kiếm</a>
+                    <a class="nav-link" href="#tournaments">Giải Đấu</a>
+                    <a class="nav-link" href="#marketplace">Mua Sắm</a>
+                    <a class="nav-link" href="#community">Cộng Đồng</a>
+                    <button class="glow-btn" onclick="openRegisterModal()">
+                        Đăng Ký Miễn Phí
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg" id="heroBg"></div>
+        
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 hero-content">
+                    <h1>🚀 Tìm Người Chơi Cùng Bạn Hôm Nay!</h1>
+                    <p class="lead">Kết nối đam mê thể thao - Tìm đối tác hoàn hảo cho mọi hoạt động</p>
+                    <button class="glow-btn" onclick="scrollToSearch()">
+                        <i class="fas fa-search"></i> Bắt Đầu Tìm Kiếm
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Floating Elements -->
+        <div class="floating-elements">
+            <div class="sparkle" style="top: 20%; left: 10%; animation-delay: 0s;"></div>
+            <div class="sparkle" style="top: 30%; right: 15%; animation-delay: 1s;"></div>
+            <div class="sparkle" style="bottom: 40%; left: 20%; animation-delay: 2s;"></div>
+            <div class="sparkle" style="bottom: 20%; right: 25%; animation-delay: 3s;"></div>
+        </div>
+    </section>
+
+    <!-- Smart Search Section -->
+    <section id="search" class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="text-center mb-5 fade-in">
+                        <h2 class="display-4 fw-bold mb-3">
+                            <i class="fas fa-brain text-primary"></i> Tìm Kiếm Thông Minh AI
+                        </h2>
+                        <p class="lead">AI sẽ giúp bạn tìm đối tác hoàn hảo dựa trên sở thích và mục tiêu</p>
+                    </div>
+                    
+                    <div class="search-form fade-in">
+                        <form id="smartSearchForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label" for="age-select">
+                                        <i class="fas fa-calendar-alt"></i> Độ tuổi
+                                    </label>
+                                    <select id="age-select" class="form-select" onchange="animateSelection(this)" aria-label="Chọn độ tuổi của bạn">
+                                        <option value="">Chọn độ tuổi</option>
+                                        <option value="18-25">18-25</option>
+                                        <option value="26-35">26-35</option>
+                                        <option value="36-45">36-45</option>
+                                        <option value="45+">45+</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label" for="level-select">
+                                        <i class="fas fa-trophy"></i> Trình độ
+                                    </label>
+                                    <select id="level-select" class="form-select" onchange="animateSelection(this)" aria-label="Chọn trình độ của bạn">
+                                        <option value="">Chọn trình độ</option>
+                                        <option value="beginner">🥉 Mới bắt đầu</option>
+                                        <option value="intermediate">🥈 Trung bình</option>
+                                        <option value="advanced">🥇 Nâng cao</option>
+                                        <option value="professional">🏆 Chuyên nghiệp</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label" for="location-input">
+                                        <i class="fas fa-map-marker-alt"></i> Địa điểm
+                                    </label>
+                                    <input type="text" id="location-input" class="form-control" placeholder="Nhập địa điểm của bạn" aria-label="Nhập địa điểm của bạn">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label" for="goal-select">
+                                        <i class="fas fa-bullseye"></i> Mục tiêu
+                                    </label>
+                                    <select id="goal-select" class="form-select" onchange="animateSelection(this)" aria-label="Chọn mục tiêu của bạn">
+                                        <option value="">Chọn mục tiêu</option>
+                                        <option value="weight-loss">💪 Giảm cân</option>
+                                        <option value="endurance">🏃 Tăng sức bền</option>
+                                        <option value="competition">🏆 Thi đấu</option>
+                                        <option value="recreation">😊 Giải trí</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label class="form-label">
+                                        <i class="fas fa-running"></i> Môn thể thao yêu thích
+                                    </label>
+                                    <div class="sports-grid">
+                                        <div class="sport-option">
+                                            <input type="checkbox" id="football">
+                                            <label for="football">⚽ Bóng đá</label>
+                                        </div>
+                                        <div class="sport-option">
+                                            <input type="checkbox" id="badminton">
+                                            <label for="badminton">🏸 Cầu lông</label>
+                                        </div>
+                                        <div class="sport-option">
+                                            <input type="checkbox" id="tennis">
+                                            <label for="tennis">🎾 Tennis</label>
+                                        </div>
+                                        <div class="sport-option">
+                                            <input type="checkbox" id="running">
+                                            <label for="running">🏃 Chạy bộ</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <button type="submit" class="glow-btn">
+                                        <i class="fas fa-magic"></i> Tìm Đối Tác AI
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tournament Section -->
+    <section id="tournaments" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5 fade-in">
+                <h2 class="display-4 fw-bold mb-3">
+                    <i class="fas fa-trophy text-warning"></i> Giải Đấu Sắp Tới
+                </h2>
+                <p class="lead">Tham gia các giải đấu chuyên nghiệp và thể hiện tài năng của bạn</p>
+            </div>
+            
+            <div class="row" id="tournamentsGrid">
+                <!-- Tournaments will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Marketplace Section -->
+    <section id="marketplace" class="py-5" style="background: linear-gradient(135deg, rgba(0,191,255,0.1) 0%, rgba(50,205,50,0.1) 100%);">
+        <div class="container">
+            <div class="text-center mb-5 fade-in">
+                <h2 class="display-4 fw-bold mb-3">
+                    <i class="fas fa-shopping-cart text-warning"></i> Chợ Đồ Thể Thao
+                </h2>
+                <p class="lead">Mua sắm đồ thể thao chính hãng với giá tốt nhất</p>
+                <div class="badges-container">
+                    <span class="badge bg-success">🚚 Miễn phí ship từ 500k</span>
+                    <span class="badge bg-warning">⚡ Giao hàng nhanh 2h</span>
+                    <span class="badge bg-info">🔄 Đổi trả 30 ngày</span>
+                </div>
+            </div>
+
+            <!-- Flash Sale Timer -->
+            <div class="flash-sale-banner mb-5 fade-in">
+                <div class="glass-card text-center flash-timer">
+                    <h3 class="fw-bold mb-3">🔥 FLASH SALE - Chỉ còn ít giờ!</h3>
+                    <div class="timer-display">
+                        <div class="timer-item">
+                            <div class="timer-number" id="hours">02</div>
+                            <small>Giờ</small>
+                        </div>
+                        <div class="timer-item">
+                            <div class="timer-number" id="minutes">45</div>
+                            <small>Phút</small>
+                        </div>
+                        <div class="timer-item">
+                            <div class="timer-number" id="seconds">30</div>
+                            <small>Giây</small>
+                        </div>
+                        <div class="timer-item">
+                            <button class="btn btn-light btn-lg fw-bold text-danger">
+                                Mua Ngay!
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Categories -->
+            <div class="categories-grid mb-5">
+                <div class="category-card" onclick="filterProducts('shoes')">
+                    <i class="fas fa-shoe-prints"></i>
+                    <h3>Giày Thể Thao</h3>
+                    <p>Nike, Adidas, Puma...</p>
+                </div>
+                <div class="category-card" onclick="filterProducts('clothes')">
+                    <i class="fas fa-tshirt"></i>
+                    <h3>Quần Áo</h3>
+                    <p>Áo, quần, đồ bộ...</p>
+                </div>
+                <div class="category-card" onclick="filterProducts('equipment')">
+                    <i class="fas fa-dumbbell"></i>
+                    <h3>Dụng Cụ</h3>
+                    <p>Vợt, bóng, tạ...</p>
+                </div>
+                <div class="category-card" onclick="filterProducts('accessories')">
+                    <i class="fas fa-stopwatch"></i>
+                    <h3>Phụ Kiện</h3>
+                    <p>Đồng hồ, túi, băng...</p>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="row" id="productsGrid">
+                <!-- Products will be loaded here -->
+            </div>
+
+            <div class="text-center mt-5">
+                <button class="glow-btn" onclick="loadMoreProducts()">
+                    <i class="fas fa-plus"></i> Xem Thêm Sản Phẩm
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section id="community" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5 fade-in">
+                <h2 class="display-4 fw-bold mb-3">
+                    <i class="fas fa-users text-success"></i> Cộng Đồng Tìm Bạn
+                </h2>
+                <p class="lead">Chia sẻ và kết nối với những người cùng đam mê thể thao</p>
+                <button class="glow-btn" onclick="openPostModal()">
+                    <i class="fas fa-plus"></i> Đăng Bài Tìm Bạn
+                </button>
+            </div>
+            
+            <div class="row" id="communityGrid">
+                <!-- Community posts will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5 fade-in">
+                <h2 class="display-4 fw-bold mb-3">
+                    <i class="fas fa-star text-warning"></i> Câu Chuyện Thành Công
+                </h2>
+                <p class="lead">Những trải nghiệm tuyệt vời từ cộng đồng của chúng tôi</p>
+            </div>
+            
+            <div class="row" id="testimonialsGrid">
+                <!-- Testimonials will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5 text-center">
+        <div class="container">
+            <div class="glass-card fade-in">
+                <h2 class="display-4 fw-bold mb-4">
+                    🚀 Tham Gia Cộng Đồng Ngay Hôm Nay!
+                </h2>
+                <p class="lead mb-4">
+                    Hơn 50,000 vận động viên đã tìm được đối tác hoàn hảo. Bạn sẽ là người tiếp theo?
+                </p>
+                <div class="cta-form">
+                    <form id="ctaForm">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Nhập email của bạn" required>
+                            <button type="submit" class="glow-btn">
+                                Tham Gia Ngay
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5" style="background: rgba(0,0,0,0.8);">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-3">
+                    <h3 class="fw-bold mb-3">
+                        <i class="fas fa-running"></i> Kết Nối Đam Mê
+                    </h3>
+                    <p>Nền tảng kết nối người chơi thể thao hàng đầu Việt Nam</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Theo dõi chúng tôi trên Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Theo dõi chúng tôi trên Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Theo dõi chúng tôi trên Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Theo dõi chúng tôi trên YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 mb-3">
+                    <h4 class="fw-bold mb-3">Sản Phẩm</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Tìm Đối Tác</a></li>
+                        <li><a href="#">Giải Đấu</a></li>
+                        <li><a href="#">Cộng Đồng</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 mb-3">
+                    <h4 class="fw-bold mb-3">Hỗ Trợ</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Trợ Giúp</a></li>
+                        <li><a href="#">Liên Hệ</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 mb-3">
+                    <h4 class="fw-bold mb-3">Đăng Ký Nhận Tin</h4>
+                    <form class="newsletter-form">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Email của bạn">
+                            <button class="btn btn-outline-light">Đăng Ký</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr style="margin: 40px 0;">
+            <div class="text-center">
+                <p>&copy; 2024 Kết Nối Đam Mê. Tất cả quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Live Chat Bubble -->
+    <div class="chat-bubble" onclick="openChat()">
+        <i class="fas fa-comments"></i>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal-overlay" id="registerModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>🚀 Đăng Ký Miễn Phí</h5>
+                <button class="close-btn" onclick="closeModal('registerModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="registerForm">
+                    <input type="text" class="form-control mb-3" placeholder="Họ và tên" required>
+                    <input type="email" class="form-control mb-3" placeholder="Email" required>
+                    <input type="tel" class="form-control mb-3" placeholder="Số điện thoại" required>
+                    <select class="form-select mb-3" required>
+                        <option>Môn thể thao yêu thích</option>
+                        <option>⚽ Bóng đá</option>
+                        <option>🏸 Cầu lông</option>
+                        <option>🎾 Tennis</option>
+                        <option>🏃 Chạy bộ</option>
+                    </select>
+                    <button type="submit" class="glow-btn w-100">
+                        Tham Gia Ngay
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="postModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>📝 Đăng Bài Tìm Bạn</h5>
+                <button class="close-btn" onclick="closeModal('postModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="postForm">
+                    <input type="text" class="form-control mb-3" placeholder="Tiêu đề bài đăng" required>
+                    <textarea class="form-control mb-3" rows="3" placeholder="Mô tả chi tiết..." required></textarea>
+                    <select class="form-select mb-3" required>
+                        <option>Môn thể thao</option>
+                        <option>⚽ Bóng đá</option>
+                        <option>🏸 Cầu lông</option>
+                        <option>🎾 Tennis</option>
+                        <option>🏃 Chạy bộ</option>
+                    </select>
+                    <input type="text" class="form-control mb-3" placeholder="Địa điểm" required>
+                    <button type="submit" class="glow-btn w-100">
+                        Đăng Bài
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load non-critical CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+
+    <style>
+        /* Non-critical CSS loaded after page render */
+        
+        /* Particles Background */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        /* Sparkling Animation */
+        @keyframes sparkle {
+            0%, 100% { 
+                opacity: 0; 
+                transform: scale(0) rotate(0deg); 
+            }
+            50% { 
+                opacity: 1; 
+                transform: scale(1) rotate(180deg); 
+            }
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: var(--gold-accent);
+            border-radius: 50%;
+            animation: sparkle 4s infinite;
+            box-shadow: 0 0 10px var(--gold-accent);
+        }
+
+        .sparkle:nth-child(2n) { animation-delay: 1s; }
+        .sparkle:nth-child(3n) { animation-delay: 2s; }
+        .sparkle:nth-child(4n) { animation-delay: 3s; }
+
         /* Glass Morphism */
         .glass-card {
             background: var(--glass-bg);
@@ -144,93 +738,16 @@
         }
 
         .glass-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             box-shadow: 0 20px 40px rgba(0, 191, 255, 0.2);
         }
 
-        /* Header */
-        .navbar {
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(20px);
-            padding: 20px 0;
-            transition: all 0.3s ease;
-        }
-
-        .navbar.scrolled {
-            background: rgba(0, 0, 0, 0.95);
-            padding: 10px 0;
-        }
-
-        .navbar-brand {
-            font-family: 'Orbitron', monospace;
-            font-weight: 900;
-            font-size: 1.8rem;
-            background: linear-gradient(45deg, var(--primary-blue), var(--energy-green));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            position: relative;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4));
-            background-attachment: fixed;
-        }
-
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 1s ease;
-        }
-
-        .hero-bg.loaded {
-            opacity: 1;
-        }
-
-        .hero-content {
-            z-index: 2;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-family: 'Orbitron', monospace;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 900;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, var(--primary-blue), var(--gold-accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow {
-            from { text-shadow: 0 0 20px rgba(0, 191, 255, 0.5); }
-            to { text-shadow: 0 0 30px rgba(255, 215, 0, 0.8); }
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
-
-        /* Search Section */
+        /* Search Form */
         .search-form {
             background: var(--glass-bg);
             backdrop-filter: blur(20px);
             border-radius: 20px;
             padding: 40px;
-            margin: 50px 0;
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
@@ -248,6 +765,7 @@
             border-color: var(--primary-blue);
             box-shadow: 0 0 20px rgba(0, 191, 255, 0.3);
             color: white !important;
+            outline: none;
         }
 
         .form-control::placeholder {
@@ -259,26 +777,178 @@
             color: white;
         }
 
-        .form-select:invalid {
-            color: rgba(255, 255, 255, 0.7);
+        .form-label {
+            color: white;
+            font-weight: 500;
+            margin-bottom: 8px;
+            display: block;
         }
 
-        /* Tournament Carousel */
+        /* Sports Grid */
+        .sports-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .sport-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sport-option input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--primary-blue);
+        }
+
+        .sport-option label {
+            color: white;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        /* Flash Sale */
+        .flash-timer {
+            background: linear-gradient(45deg, #FF6B6B, #FF8E53);
+            animation: pulse-glow 2s infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 107, 107, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(255, 107, 107, 0.8); }
+        }
+
+        .timer-display {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .timer-item {
+            text-align: center;
+        }
+
+        .timer-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        /* Categories Grid */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .category-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 191, 255, 0.3);
+        }
+
+        .category-card i {
+            font-size: 3rem;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        .category-card h3 {
+            color: white;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .category-card p {
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0;
+        }
+
+        /* Product Cards */
+        .product-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 191, 255, 0.3);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .product-card .badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 2;
+        }
+
+        .product-card .discount-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(45deg, #FF6B6B, #FF8E53);
+            z-index: 2;
+        }
+
+        .price-original {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .price-sale {
+            color: var(--energy-green);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Tournament Cards */
         .tournament-card {
             background: var(--glass-bg);
             backdrop-filter: blur(20px);
             border-radius: 20px;
             overflow: hidden;
             transition: all 0.5s ease;
-            transform-style: preserve-3d;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .tournament-card:hover {
-            transform: rotateY(10deg) rotateX(5deg) scale(1.05);
+            transform: rotateY(5deg) rotateX(2deg) scale(1.02);
             box-shadow: 0 30px 60px rgba(0, 191, 255, 0.3);
         }
 
         .tournament-card img {
+            width: 100%;
             height: 200px;
             object-fit: cover;
             transition: transform 0.5s ease;
@@ -288,13 +958,12 @@
             transform: scale(1.1);
         }
 
-        /* Friend Posts Grid */
+        /* Community Cards */
         .friend-card {
             background: var(--glass-bg);
             backdrop-filter: blur(20px);
             border-radius: 20px;
             padding: 25px;
-            margin-bottom: 30px;
             border: 1px solid rgba(255, 255, 255, 0.2);
             transition: all 0.3s ease;
             position: relative;
@@ -322,6 +991,244 @@
             transform: scale(1);
         }
 
+        /* Testimonial Cards */
+        .testimonial-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .testimonial-card:hover {
+            box-shadow: 0 0 40px rgba(0, 191, 255, 0.4);
+        }
+
+        .testimonial-card::after {
+            content: '⭐';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 2rem;
+            animation: sparkle 3s infinite;
+        }
+
+        /* Live Chat Bubble */
+        .chat-bubble {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, var(--primary-blue), var(--energy-green));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
+            animation: pulse 2s infinite;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 20px rgba(0, 191, 255, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(0, 191, 255, 0.8); }
+            100% { box-shadow: 0 0 20px rgba(0, 191, 255, 0.5); }
+        }
+
+        /* Modals */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            padding: 20px 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: between;
+            align-items: center;
+        }
+
+        .modal-header h5 {
+            color: white;
+            margin: 0;
+            flex-grow: 1;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        /* Badges */
+        .badges-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .badge {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .bg-success { background: var(--energy-green) !important; }
+        .bg-warning { background: var(--gold-accent) !important; color: #000 !important; }
+        .bg-info { background: var(--primary-blue) !important; }
+
+        /* CTA Form */
+        .cta-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+            align-items: stretch;
+        }
+
+        .input-group .form-control {
+            flex-grow: 1;
+        }
+
+        .input-group .glow-btn {
+            flex-shrink: 0;
+        }
+
+        /* Footer */
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 8px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .newsletter-form .input-group {
+            margin-top: 10px;
+        }
+
+        .newsletter-form .form-control {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+        }
+
+        .btn-outline-light {
+            border: 2px solid #ffffff;
+            color: #ffffff;
+            background: rgba(0, 0, 0, 0.3);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-light:hover {
+            background: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+
+        .newsletter-form .btn-outline-light {
+            border: 2px solid #ffffff;
+            color: #ffffff;
+            background: rgba(0, 0, 0, 0.3);
+            font-weight: 600;
+        }
+
+        .newsletter-form .btn-outline-light:hover {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        /* Fade In Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* Particle Burst Effect */
         .particle-burst {
             position: absolute;
@@ -344,254 +1251,6 @@
             }
         }
 
-        /* Testimonials */
-        .testimonial-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 30px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .testimonial-card:hover {
-            box-shadow: 0 0 40px rgba(0, 191, 255, 0.4);
-        }
-
-        .testimonial-card::after {
-            content: '⭐';
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            font-size: 2rem;
-            animation: sparkle 2s infinite;
-        }
-
-        /* Live Chat Bubble */
-        .chat-bubble {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(45deg, var(--primary-blue), var(--energy-green));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 1000;
-            box-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 20px rgba(0, 191, 255, 0.5); }
-            50% { box-shadow: 0 0 40px rgba(0, 191, 255, 0.8); }
-            100% { box-shadow: 0 0 20px rgba(0, 191, 255, 0.5); }
-        }
-
-        /* Fade In Animation */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Mobile Optimizations */
-        @media (max-width: 576px) {
-            .hero {
-                height: 100vh;
-                padding: 0 15px;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-                line-height: 1.2;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            .search-form {
-                padding: 15px;
-                margin: 30px 0;
-            }
-            
-            .glass-card {
-                padding: 15px;
-                margin-bottom: 20px;
-            }
-            
-            .glow-btn {
-                padding: 12px 20px;
-                font-size: 0.9rem;
-                width: 100%;
-                margin-bottom: 10px;
-            }
-            
-            .tournament-card {
-                margin-bottom: 20px;
-            }
-            
-            .friend-card {
-                padding: 15px;
-                margin-bottom: 20px;
-            }
-            
-            .testimonial-card {
-                padding: 20px;
-                margin-bottom: 20px;
-            }
-            
-            .chat-bubble {
-                width: 50px;
-                height: 50px;
-                bottom: 20px;
-                right: 20px;
-            }
-            
-            .navbar-brand {
-                font-size: 1.4rem;
-            }
-            
-            .display-4 {
-                font-size: 2rem;
-            }
-            
-            .form-control, .form-select {
-                padding: 12px;
-                font-size: 16px; /* Prevents zoom on iOS */
-            }
-            
-            .modal-dialog {
-                margin: 10px;
-            }
-            
-            .modal-content {
-                border-radius: 15px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .search-form {
-                padding: 20px;
-            }
-            
-            .glass-card {
-                padding: 20px;
-            }
-            
-            .glow-btn {
-                padding: 14px 25px;
-            }
-            
-            .container {
-                padding-left: 20px;
-                padding-right: 20px;
-            }
-        }
-
-        @media (min-width: 992px) {
-            .hero {
-                background-attachment: fixed;
-            }
-        }
-
-        /* Touch-friendly improvements */
-        @media (hover: none) and (pointer: coarse) {
-            .glow-btn:hover {
-                transform: none;
-            }
-            
-            .glass-card:hover {
-                transform: none;
-            }
-            
-            .tournament-card:hover {
-                transform: none;
-            }
-            
-            .friend-card:hover {
-                transform: none;
-            }
-        }
-
-        /* Product Cards */
-        .product-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            position: relative;
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 191, 255, 0.3);
-        }
-
-        .product-card .badge {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            z-index: 2;
-        }
-
-        .product-card .discount-badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: linear-gradient(45deg, #FF6B6B, #FF8E53);
-            z-index: 2;
-        }
-
-        .product-card img {
-            height: 200px;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .product-card:hover img {
-            transform: scale(1.1);
-        }
-
-        .price-original {
-            text-decoration: line-through;
-            color: #999;
-        }
-
-        .price-sale {
-            color: var(--energy-green);
-            font-weight: bold;
-            font-size: 1.2em;
-        }
-
-        /* Flash Sale Timer */
-        .flash-timer {
-            background: linear-gradient(45deg, #FF6B6B, #FF8E53);
-            animation: pulse-glow 2s infinite;
-        }
-
-        @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(255, 107, 107, 0.5); }
-            50% { box-shadow: 0 0 40px rgba(255, 107, 107, 0.8); }
-        }
-
         /* Loading Animation */
         .loading {
             display: inline-block;
@@ -605,65 +1264,6 @@
 
         @keyframes spin {
             to { transform: rotate(360deg); }
-        }
-
-        /* Lazy Loading Styles */
-        .lazy {
-            opacity: 0;
-            transition: opacity 0.3s;
-            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-            background-size: 200% 100%;
-            animation: loading-shimmer 1.5s infinite;
-        }
-
-        .lazy.loaded {
-            opacity: 1;
-        }
-
-        @keyframes loading-shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-
-        /* Image Optimization */
-        .optimized-img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            transition: all 0.3s ease;
-        }
-
-        .img-placeholder {
-            background: linear-gradient(135deg, rgba(0,191,255,0.1), rgba(50,205,50,0.1));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(255,255,255,0.5);
-            font-size: 2rem;
-        }
-
-        /* Progressive Image Loading */
-        .progressive-img {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .progressive-img .img-small {
-            filter: blur(5px);
-            transform: scale(1.1);
-            transition: all 0.3s ease;
-        }
-
-        .progressive-img .img-large {
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .progressive-img .img-large.loaded {
-            opacity: 1;
         }
 
         /* Success Animation */
@@ -688,891 +1288,170 @@
             0%, 100% { transform: none; }
             50% { transform: scale3d(1.1, 1.1, 1); }
         }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .search-form {
+                padding: 20px;
+            }
+            
+            .glass-card {
+                padding: 20px;
+            }
+            
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .category-card {
+                padding: 20px;
+            }
+            
+            .category-card i {
+                font-size: 2rem;
+            }
+            
+            .category-card h3 {
+                font-size: 1.2rem;
+            }
+            
+            h3 {
+                font-size: 1.5rem;
+            }
+            
+            h4 {
+                font-size: 1.3rem;
+            }
+            
+            .timer-display {
+                gap: 15px;
+            }
+            
+            .timer-number {
+                font-size: 2rem;
+            }
+            
+            .input-group {
+                flex-direction: column;
+            }
+            
+            .input-group .glow-btn {
+                width: 100%;
+            }
+            
+            .badges-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .chat-bubble {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 1.2rem;
+            }
+            
+            .modal-content {
+                width: 95%;
+            }
+            
+            .modal-header, .modal-body {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .sports-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timer-display {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
     </style>
-</head>
-<body>
-    <!-- Particles Background -->
-    <div id="particles-js"></div>
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <i class="fas fa-running"></i> Kết Nối Đam Mê
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="#search">Tìm Kiếm</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="#tournaments">Giải Đấu</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="#marketplace">
-                            <i class="fas fa-shopping-cart"></i> Mua Sắm
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="#community">Cộng Đồng</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="#testimonials">Đánh Giá</a>
-                    </li>
-                </ul>
-                <button class="btn glow-btn ms-3" onclick="openRegisterModal()">
-                    Đăng Ký Miễn Phí
-                </button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <!-- Lazy loaded background -->
-        <div class="hero-bg">
-            <img data-src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1920&h=1080&fit=crop&auto=format&q=80" 
-                 alt="Hero Background" 
-                 class="optimized-img lazy" 
-                 style="width: 100%; height: 100%; object-fit: cover;">
-        </div>
-        
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 hero-content">
-                    <h1>Tìm Người Chơi Cùng Bạn Hôm Nay!</h1>
-                    <p class="lead">Kết nối đam mê thể thao - Tìm đối tác hoàn hảo cho mọi hoạt động</p>
-                    <button class="btn glow-btn btn-lg" onclick="scrollToSearch()">
-                        <i class="fas fa-search"></i> Bắt Đầu Tìm Kiếm
-                    </button>
-                </div>
-            </div>
-        </div>
-        <!-- Sparkling Elements -->
-        <div class="sparkle" style="top: 20%; left: 10%;"></div>
-        <div class="sparkle" style="top: 30%; right: 15%;"></div>
-        <div class="sparkle" style="bottom: 40%; left: 20%;"></div>
-        <div class="sparkle" style="bottom: 20%; right: 25%;"></div>
-    </section>
-
-    <!-- Smart Search Section -->
-    <section id="search" class="py-5">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="text-center mb-5 fade-in">
-                        <h2 class="display-4 fw-bold mb-3">
-                            <i class="fas fa-brain text-primary"></i> Tìm Kiếm Thông Minh
-                        </h2>
-                        <p class="lead">AI sẽ giúp bạn tìm đối tác hoàn hảo dựa trên sở thích và mục tiêu</p>
-                    </div>
-                    
-                    <form class="search-form fade-in" id="smartSearchForm">
-                        <div class="row g-4">
-                            <div class="col-md-6">
-                                <label class="form-label">
-                                    <i class="fas fa-calendar-alt"></i> Độ tuổi
-                                </label>
-                                <select class="form-select" onchange="animateSelection(this)">
-                                    <option>Chọn độ tuổi</option>
-                                    <option>18-25</option>
-                                    <option>26-35</option>
-                                    <option>36-45</option>
-                                    <option>45+</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">
-                                    <i class="fas fa-trophy"></i> Trình độ
-                                </label>
-                                <select class="form-select" onchange="animateSelection(this)">
-                                    <option>Chọn trình độ</option>
-                                    <option>🥉 Mới bắt đầu</option>
-                                    <option>🥈 Trung bình</option>
-                                    <option>🥇 Nâng cao</option>
-                                    <option>🏆 Chuyên nghiệp</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">
-                                    <i class="fas fa-map-marker-alt"></i> Địa điểm
-                                </label>
-                                <input type="text" class="form-control" placeholder="Nhập địa điểm của bạn" id="locationInput">
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">
-                                    <i class="fas fa-bullseye"></i> Mục tiêu
-                                </label>
-                                <select class="form-select" onchange="animateSelection(this)">
-                                    <option>Chọn mục tiêu</option>
-                                    <option>💪 Giảm cân</option>
-                                    <option>🏃 Tăng sức bền</option>
-                                    <option>🏆 Thi đấu</option>
-                                    <option>😊 Giải trí</option>
-                                </select>
-                            </div>
-                            <div class="col-12">
-                                <label class="form-label">
-                                    <i class="fas fa-running"></i> Môn thể thao yêu thích
-                                </label>
-                                <div class="row g-2">
-                                    <div class="col-6 col-sm-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="football">
-                                            <label class="form-check-label" for="football">⚽ Bóng đá</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-sm-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="badminton">
-                                            <label class="form-check-label" for="badminton">🏸 Cầu lông</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-sm-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="tennis">
-                                            <label class="form-check-label" for="tennis">🎾 Tennis</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-sm-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="running">
-                                            <label class="form-check-label" for="running">🏃 Chạy bộ</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 text-center">
-                                <button type="submit" class="btn glow-btn btn-lg">
-                                    <i class="fas fa-magic"></i> Tìm Đối Tác AI
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Tournament Organizer Section -->
-    <section id="tournaments" class="py-5">
-        <div class="container">
-            <div class="text-center mb-5 fade-in">
-                <h2 class="display-4 fw-bold mb-3">
-                    <i class="fas fa-trophy text-warning"></i> Giải Đấu Sắp Tới
-                </h2>
-                <p class="lead">Tham gia các giải đấu chuyên nghiệp và thể hiện tài năng của bạn</p>
-            </div>
-            
-            <div id="tournamentCarousel" class="carousel slide fade-in" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="row g-4">
-                            <div class="col-12 col-sm-6 col-md-4">
-                                <div class="tournament-card">
-                                    <div class="progressive-img" style="height: 200px;">
-                                        <img data-src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400&h=200&fit=crop&auto=format&q=80" 
-                                             alt="Giải bóng đá" 
-                                             class="optimized-img lazy w-100" 
-                                             style="height: 200px;">
-                                        <div class="img-placeholder" style="height: 200px;">
-                                            <i class="fas fa-futbol"></i>
-                                        </div>
-                                    </div>
-                                    <div class="p-3 p-md-4">
-                                        <h5 class="fw-bold">🏆 Giải Bóng Đá Mùa Xuân</h5>
-                                        <p class="text-muted mb-2 small">📅 15/02/2024 • 📍 Sân Mỹ Đình</p>
-                                        <p class="mb-3 small">Giải đấu bóng đá 7vs7 dành cho các đội nghiệp dư</p>
-                                        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-2">
-                                            <span class="badge bg-success">💰 5.000.000đ</span>
-                                            <button class="btn btn-outline-light btn-sm w-100 w-sm-auto" onclick="registerTournament(1)">
-                                                Đăng Ký
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4">
-                                <div class="tournament-card">
-                                    <div class="progressive-img" style="height: 200px;">
-                                        <img data-src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=400&h=200&fit=crop&auto=format&q=80" 
-                                             alt="Giải cầu lông" 
-                                             class="optimized-img lazy w-100" 
-                                             style="height: 200px;">
-                                        <div class="img-placeholder" style="height: 200px;">
-                                            <i class="fas fa-table-tennis"></i>
-                                        </div>
-                                    </div>
-                                    <div class="p-3 p-md-4">
-                                        <h5 class="fw-bold">🏸 Cầu Lông Championship</h5>
-                                        <p class="text-muted mb-2 small">📅 20/02/2024 • 📍 Cung thể thao</p>
-                                        <p class="mb-3 small">Giải cầu lông đơn nam/nữ và đôi nam nữ</p>
-                                        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-2">
-                                            <span class="badge bg-success">💰 3.000.000đ</span>
-                                            <button class="btn btn-outline-light btn-sm w-100 w-sm-auto" onclick="registerTournament(2)">
-                                                Đăng Ký
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4">
-                                <div class="tournament-card">
-                                    <div class="progressive-img" style="height: 200px;">
-                                        <img data-src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=200&fit=crop&auto=format&q=80" 
-                                             alt="Marathon" 
-                                             class="optimized-img lazy w-100" 
-                                             style="height: 200px;">
-                                        <div class="img-placeholder" style="height: 200px;">
-                                            <i class="fas fa-running"></i>
-                                        </div>
-                                    </div>
-                                    <div class="p-3 p-md-4">
-                                        <h5 class="fw-bold">🏃 Marathon Hà Nội</h5>
-                                        <p class="text-muted mb-2 small">📅 25/02/2024 • 📍 Hồ Gươm</p>
-                                        <p class="mb-3 small">Cuộc đua marathon 42km qua các địa danh nổi tiếng</p>
-                                        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-2">
-                                            <span class="badge bg-success">🎁 Huy chương</span>
-                                            <button class="btn btn-outline-light btn-sm w-100 w-sm-auto" onclick="registerTournament(3)">
-                                                Đăng Ký
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#tournamentCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon"></span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#tournamentCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon"></span>
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sports Marketplace Section -->
-    <section id="marketplace" class="py-5" style="background: linear-gradient(135deg, rgba(0,191,255,0.1) 0%, rgba(50,205,50,0.1) 100%);">
-        <div class="container">
-            <div class="text-center mb-5 fade-in">
-                <h2 class="display-4 fw-bold mb-3">
-                    <i class="fas fa-shopping-cart text-warning"></i> Chợ Đồ Thể Thao
-                </h2>
-                <p class="lead">Mua sắm đồ thể thao chính hãng với giá tốt nhất - Giao hàng toàn quốc</p>
-                <div class="d-flex justify-content-center gap-3 flex-wrap">
-                    <span class="badge bg-success fs-6 px-3 py-2">🚚 Miễn phí ship từ 500k</span>
-                    <span class="badge bg-warning fs-6 px-3 py-2">⚡ Giao hàng nhanh 2h</span>
-                    <span class="badge bg-info fs-6 px-3 py-2">🔄 Đổi trả 30 ngày</span>
-                </div>
-            </div>
-
-            <!-- Hot Deals Banner -->
-            <div class="row mb-5">
-                <div class="col-12">
-                    <div class="glass-card text-center fade-in" style="background: linear-gradient(45deg, #FF6B6B, #FF8E53); border: none;">
-                        <h3 class="fw-bold mb-3">🔥 FLASH SALE - Chỉ còn 2 giờ!</h3>
-                        <div class="row g-3">
-                            <div class="col-6 col-md-3">
-                                <div class="text-center">
-                                    <div class="fs-2 fw-bold" id="hours">02</div>
-                                    <small>Giờ</small>
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-3">
-                                <div class="text-center">
-                                    <div class="fs-2 fw-bold" id="minutes">45</div>
-                                    <small>Phút</small>
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-3">
-                                <div class="text-center">
-                                    <div class="fs-2 fw-bold" id="seconds">30</div>
-                                    <small>Giây</small>
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-3">
-                                <button class="btn btn-light btn-lg fw-bold text-danger">
-                                    Mua Ngay!
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product Categories -->
-            <div class="row g-4 mb-5">
-                <div class="col-6 col-md-3 fade-in">
-                    <div class="glass-card text-center h-100" style="cursor: pointer;" onclick="filterProducts('shoes')">
-                        <i class="fas fa-shoe-prints fs-1 text-primary mb-3"></i>
-                        <h5>Giày Thể Thao</h5>
-                        <p class="small text-muted">Nike, Adidas, Puma...</p>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3 fade-in">
-                    <div class="glass-card text-center h-100" style="cursor: pointer;" onclick="filterProducts('clothes')">
-                        <i class="fas fa-tshirt fs-1 text-success mb-3"></i>
-                        <h5>Quần Áo</h5>
-                        <p class="small text-muted">Áo, quần, đồ bộ...</p>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3 fade-in">
-                    <div class="glass-card text-center h-100" style="cursor: pointer;" onclick="filterProducts('equipment')">
-                        <i class="fas fa-dumbbell fs-1 text-warning mb-3"></i>
-                        <h5>Dụng Cụ</h5>
-                        <p class="small text-muted">Vợt, bóng, tạ...</p>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3 fade-in">
-                    <div class="glass-card text-center h-100" style="cursor: pointer;" onclick="filterProducts('accessories')">
-                        <i class="fas fa-stopwatch fs-1 text-info mb-3"></i>
-                        <h5>Phụ Kiện</h5>
-                        <p class="small text-muted">Đồng hồ, túi, băng...</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Featured Products -->
-            <div class="row g-4" id="productsGrid">
-                <!-- Products will be populated by JavaScript -->
-            </div>
-
-            <!-- View More Button -->
-            <div class="text-center mt-5 fade-in">
-                <button class="btn glow-btn btn-lg" onclick="loadMoreProducts()">
-                    <i class="fas fa-plus"></i> Xem Thêm Sản Phẩm
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Post to Find Friends Section -->
-    <section id="community" class="py-5">
-        <div class="container">
-            <div class="text-center mb-5 fade-in">
-                <h2 class="display-4 fw-bold mb-3">
-                    <i class="fas fa-users text-success"></i> Cộng Đồng Tìm Bạn
-                </h2>
-                <p class="lead">Chia sẻ và kết nối với những người cùng đam mê thể thao</p>
-                <button class="btn glow-btn" onclick="openPostModal()">
-                    <i class="fas fa-plus"></i> Đăng Bài Tìm Bạn
-                </button>
-            </div>
-            
-            <div class="row g-4" id="friendPostsGrid">
-                <!-- Posts will be populated by JavaScript -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="py-5">
-        <div class="container">
-            <div class="text-center mb-5 fade-in">
-                <h2 class="display-4 fw-bold mb-3">
-                    <i class="fas fa-star text-warning"></i> Câu Chuyện Thành Công
-                </h2>
-                <p class="lead">Những trải nghiệm tuyệt vời từ cộng đồng của chúng tôi</p>
-            </div>
-            
-            <div class="row g-4">
-                <div class="col-12 col-sm-6 col-md-4 fade-in">
-                    <div class="testimonial-card">
-                        <img data-src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face&auto=format&q=80" 
-                             alt="Minh Tuấn" 
-                             class="rounded-circle mb-3 lazy" 
-                             width="80" 
-                             height="80"
-                             style="background: linear-gradient(135deg, rgba(0,191,255,0.2), rgba(50,205,50,0.2));">
-                        <h5>Minh Tuấn</h5>
-                        <p class="text-muted small">Runner • Hà Nội</p>
-                        <p class="small">"Nhờ nền tảng này, tôi đã tìm được nhóm chạy bộ tuyệt vời và hoàn thành marathon đầu tiên!"</p>
-                        <div class="text-warning">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 fade-in">
-                    <div class="testimonial-card">
-                        <img data-src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&h=80&fit=crop&crop=face&auto=format&q=80" 
-                             alt="Thu Hà" 
-                             class="rounded-circle mb-3 lazy" 
-                             width="80" 
-                             height="80"
-                             style="background: linear-gradient(135deg, rgba(0,191,255,0.2), rgba(50,205,50,0.2));">
-                        <h5>Thu Hà</h5>
-                        <p class="text-muted small">Tennis Player • TP.HCM</p>
-                        <p class="small">"Tìm được đối tác tennis cùng trình độ thật dễ dàng. Giờ tôi chơi tennis mỗi ngày!"</p>
-                        <div class="text-warning">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 fade-in">
-                    <div class="testimonial-card">
-                        <img data-src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face&auto=format&q=80" 
-                             alt="Đức Anh" 
-                             class="rounded-circle mb-3 lazy" 
-                             width="80" 
-                             height="80"
-                             style="background: linear-gradient(135deg, rgba(0,191,255,0.2), rgba(50,205,50,0.2));">
-                        <h5>Đức Anh</h5>
-                        <p class="text-muted small">Football Player • Đà Nẵng</p>
-                        <p class="small">"Đội bóng của tôi được thành lập từ app này. Chúng tôi đã vô địch giải địa phương!"</p>
-                        <div class="text-warning">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="py-5 text-center">
-        <div class="container">
-            <div class="glass-card fade-in">
-                <h2 class="display-4 fw-bold mb-4">
-                    🚀 Tham Gia Cộng Đồng Ngay Hôm Nay!
-                </h2>
-                <p class="lead mb-4">
-                    Hơn 50,000 vận động viên đã tìm được đối tác hoàn hảo. Bạn sẽ là người tiếp theo?
-                </p>
-                <div class="row justify-content-center">
-                    <div class="col-lg-6">
-                        <form id="ctaForm" class="d-flex flex-column flex-sm-row gap-3">
-                            <input type="email" class="form-control flex-grow-1" placeholder="Nhập email của bạn" required>
-                            <button type="submit" class="btn glow-btn flex-shrink-0">
-                                Tham Gia Ngay
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-5 mt-5" style="background: rgba(0,0,0,0.8);">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-lg-4">
-                    <h5 class="fw-bold mb-3">
-                        <i class="fas fa-running"></i> Kết Nối Đam Mê
-                    </h5>
-                    <p>Nền tảng kết nối người chơi thể thao hàng đầu Việt Nam</p>
-                    <div class="d-flex gap-3">
-                        <a href="#" class="text-white fs-4"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="text-white fs-4"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-white fs-4"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-white fs-4"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-2">
-                    <h6 class="fw-bold mb-3">Sản Phẩm</h6>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-white-50">Tìm Đối Tác</a></li>
-                        <li><a href="#" class="text-white-50">Giải Đấu</a></li>
-                        <li><a href="#" class="text-white-50">Cộng Đồng</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-2">
-                    <h6 class="fw-bold mb-3">Hỗ Trợ</h6>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-white-50">Trợ Giúp</a></li>
-                        <li><a href="#" class="text-white-50">Liên Hệ</a></li>
-                        <li><a href="#" class="text-white-50">FAQ</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-4">
-                    <h6 class="fw-bold mb-3">Đăng Ký Nhận Tin</h6>
-                    <form class="d-flex gap-2">
-                        <input type="email" class="form-control" placeholder="Email của bạn">
-                        <button class="btn btn-outline-light">Đăng Ký</button>
-                    </form>
-                </div>
-            </div>
-            <hr class="my-4">
-            <div class="text-center">
-                <p class="mb-0">&copy; 2024 Kết Nối Đam Mê. Tất cả quyền được bảo lưu.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Live Chat Bubble -->
-    <div class="chat-bubble" onclick="openChat()">
-        <i class="fas fa-comments text-white fs-4"></i>
-    </div>
-
-    <!-- Modals -->
-    <!-- Register Modal -->
-    <div class="modal fade" id="registerModal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content" style="background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.2);">
-                <div class="modal-header border-0">
-                    <h5 class="modal-title text-white">🚀 Đăng Ký Miễn Phí</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="registerForm">
-                        <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Họ và tên" required>
-                        </div>
-                        <div class="mb-3">
-                            <input type="email" class="form-control" placeholder="Email" required>
-                        </div>
-                        <div class="mb-3">
-                            <input type="tel" class="form-control" placeholder="Số điện thoại" required>
-                        </div>
-                        <div class="mb-3">
-                            <select class="form-select" required>
-                                <option>Môn thể thao yêu thích</option>
-                                <option>⚽ Bóng đá</option>
-                                <option>🏸 Cầu lông</option>
-                                <option>🎾 Tennis</option>
-                                <option>🏃 Chạy bộ</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="btn glow-btn w-100">
-                            Tham Gia Ngay
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Post Modal -->
-    <div class="modal fade" id="postModal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content" style="background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.2);">
-                <div class="modal-header border-0">
-                    <h5 class="modal-title text-white">📝 Đăng Bài Tìm Bạn</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="postForm">
-                        <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Tiêu đề bài đăng" required>
-                        </div>
-                        <div class="mb-3">
-                            <textarea class="form-control" rows="3" placeholder="Mô tả chi tiết..." required></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <select class="form-select" required>
-                                <option>Môn thể thao</option>
-                                <option>⚽ Bóng đá</option>
-                                <option>🏸 Cầu lông</option>
-                                <option>🎾 Tennis</option>
-                                <option>🏃 Chạy bộ</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Địa điểm" required>
-                        </div>
-                        <button type="submit" class="btn glow-btn w-100">
-                            Đăng Bài
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        // Particles.js Configuration
-        particlesJS('particles-js', {
-            particles: {
-                number: { value: 80, density: { enable: true, value_area: 800 } },
-                color: { value: ['#00BFFF', '#32CD32', '#FFD700'] },
-                shape: { type: 'circle' },
-                opacity: { value: 0.5, random: false },
-                size: { value: 3, random: true },
-                line_linked: { enable: true, distance: 150, color: '#00BFFF', opacity: 0.4, width: 1 },
-                move: { enable: true, speed: 6, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
+        // Performance optimized JavaScript
+        
+        // Sample data
+        const tournaments = [
+            {
+                id: 1,
+                name: "🏆 Giải Bóng Đá Mùa Xuân",
+                date: "15/02/2024",
+                location: "Sân Mỹ Đình",
+                description: "Giải đấu bóng đá 7vs7 dành cho các đội nghiệp dư",
+                prize: "5.000.000đ",
+                image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400&h=200&fit=crop&auto=format&q=80"
             },
-            interactivity: {
-                detect_on: 'canvas',
-                events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
-                modes: { grab: { distance: 400, line_linked: { opacity: 1 } }, bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 }, repulse: { distance: 200, duration: 0.4 }, push: { particles_nb: 4 }, remove: { particles_nb: 2 } }
+            {
+                id: 2,
+                name: "🏸 Cầu Lông Championship",
+                date: "20/02/2024",
+                location: "Cung thể thao",
+                description: "Giải cầu lông đơn nam/nữ và đôi nam nữ",
+                prize: "3.000.000đ",
+                image: "https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=400&h=200&fit=crop&auto=format&q=80"
             },
-            retina_detect: true
-        });
+            {
+                id: 3,
+                name: "🏃 Marathon Hà Nội",
+                date: "25/02/2024",
+                location: "Hồ Gươm",
+                description: "Cuộc đua marathon 42km qua các địa danh nổi tiếng",
+                prize: "Huy chương",
+                image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=200&fit=crop&auto=format&q=80"
+            }
+        ];
 
-        // Sample products data with optimized images
         const products = [
             {
                 id: 1,
                 name: "Giày Nike Air Max 270",
                 category: "shoes",
                 image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=300&fit=crop&auto=format&q=80",
-                placeholder: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=50&h=38&fit=crop&auto=format&q=20",
                 originalPrice: 2500000,
                 salePrice: 1990000,
                 discount: 20,
                 rating: 4.8,
                 reviews: 156,
-                badge: "Bán chạy",
-                description: "Giày thể thao nam Nike Air Max 270 chính hãng"
+                badge: "Bán chạy"
             },
             {
                 id: 2,
                 name: "Áo Adidas Training",
                 category: "clothes",
                 image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=300&fit=crop&auto=format&q=80",
-                placeholder: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=50&h=38&fit=crop&auto=format&q=20",
                 originalPrice: 890000,
                 salePrice: 690000,
                 discount: 22,
                 rating: 4.6,
                 reviews: 89,
-                badge: "Mới",
-                description: "Áo thun thể thao Adidas chất liệu thoáng mát"
+                badge: "Mới"
             },
             {
                 id: 3,
                 name: "Vợt Cầu Lông Yonex",
                 category: "equipment",
                 image: "https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=400&h=300&fit=crop&auto=format&q=80",
-                placeholder: "https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=50&h=38&fit=crop&auto=format&q=20",
                 originalPrice: 1200000,
                 salePrice: 950000,
                 discount: 21,
                 rating: 4.9,
                 reviews: 234,
-                badge: "Pro",
-                description: "Vợt cầu lông Yonex chuyên nghiệp"
-            },
-            {
-                id: 4,
-                name: "Đồng Hồ Thể Thao Garmin",
-                category: "accessories",
-                image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=300&fit=crop&auto=format&q=80",
-                placeholder: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=50&h=38&fit=crop&auto=format&q=20",
-                originalPrice: 5500000,
-                salePrice: 4200000,
-                discount: 24,
-                rating: 4.7,
-                reviews: 67,
-                badge: "Hot",
-                description: "Đồng hồ thông minh theo dõi sức khỏe"
-            },
-            {
-                id: 5,
-                name: "Quần Short Nike Dri-FIT",
-                category: "clothes",
-                image: "https://images.unsplash.com/photo-1506629905607-d405b7a82d52?w=400&h=300&fit=crop&auto=format&q=80",
-                placeholder: "https://images.unsplash.com/photo-1506629905607-d405b7a82d52?w=50&h=38&fit=crop&auto=format&q=20",
-                originalPrice: 650000,
-                salePrice: 490000,
-                discount: 25,
-                rating: 4.5,
-                reviews: 123,
-                badge: "Sale",
-                description: "Quần short thể thao Nike công nghệ Dri-FIT"
-            },
-            {
-                id: 6,
-                name: "Bóng Đá FIFA Quality",
-                category: "equipment",
-                image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400&h=300&fit=crop&auto=format&q=80",
-                placeholder: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=50&h=38&fit=crop&auto=format&q=20",
-                originalPrice: 450000,
-                salePrice: 350000,
-                discount: 22,
-                rating: 4.4,
-                reviews: 78,
-                badge: "Chất lượng",
-                description: "Bóng đá FIFA Quality Pro chính thức"
+                badge: "Pro"
             }
         ];
 
-        let currentProducts = products.slice(0, 6);
-        let currentCategory = 'all';
-
-        // Render products with lazy loading
-        function renderProducts(productsToRender = currentProducts) {
-            const grid = document.getElementById('productsGrid');
-            grid.innerHTML = productsToRender.map(product => `
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="product-card h-100">
-                        <div class="position-relative progressive-img" style="height: 200px;">
-                            <img src="${product.placeholder}" 
-                                 data-src="${product.image}" 
-                                 alt="${product.name}" 
-                                 class="optimized-img lazy w-100 img-small" 
-                                 style="height: 200px;">
-                            <img data-src="${product.image}" 
-                                 alt="${product.name}" 
-                                 class="optimized-img w-100 img-large" 
-                                 style="height: 200px;">
-                            <span class="badge bg-primary">${product.badge}</span>
-                            <span class="badge discount-badge">-${product.discount}%</span>
-                        </div>
-                        <div class="p-3">
-                            <h6 class="fw-bold mb-2">${product.name}</h6>
-                            <p class="small text-muted mb-2">${product.description}</p>
-                            <div class="d-flex align-items-center mb-2">
-                                <div class="text-warning me-2">
-                                    ${'★'.repeat(Math.floor(product.rating))}${'☆'.repeat(5-Math.floor(product.rating))}
-                                </div>
-                                <small class="text-muted">(${product.reviews})</small>
-                            </div>
-                            <div class="mb-3">
-                                <span class="price-original small">${product.originalPrice.toLocaleString()}đ</span>
-                                <div class="price-sale">${product.salePrice.toLocaleString()}đ</div>
-                            </div>
-                            <div class="d-flex gap-2">
-                                <button class="btn btn-outline-light btn-sm flex-grow-1" onclick="addToCart(${product.id}, this)">
-                                    <i class="fas fa-cart-plus"></i> Thêm
-                                </button>
-                                <button class="btn glow-btn btn-sm" onclick="buyNow(${product.id}, this)">
-                                    Mua
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-            
-            // Initialize lazy loading for new products
-            initializeLazyLoading();
-        }
-
-        // Filter products by category
-        function filterProducts(category) {
-            currentCategory = category;
-            const filteredProducts = category === 'all' ? products : products.filter(p => p.category === category);
-            renderProducts(filteredProducts);
-            
-            // Visual feedback
-            document.querySelectorAll('.glass-card').forEach(card => {
-                card.style.transform = 'scale(1)';
-                card.style.boxShadow = '';
-            });
-            
-            event.target.closest('.glass-card').style.transform = 'scale(1.05)';
-            event.target.closest('.glass-card').style.boxShadow = '0 0 30px rgba(0, 191, 255, 0.5)';
-        }
-
-        // Add to cart with animation
-        function addToCart(productId, button) {
-            const rect = button.getBoundingClientRect();
-            createParticleBurst(rect.left + rect.width/2, rect.top + rect.height/2);
-            
-            button.innerHTML = '<i class="fas fa-check"></i> Đã thêm';
-            button.classList.add('btn-success');
-            button.disabled = true;
-            
-            setTimeout(() => {
-                button.innerHTML = '<i class="fas fa-cart-plus"></i> Thêm';
-                button.classList.remove('btn-success');
-                button.disabled = false;
-            }, 2000);
-            
-            showToast('Đã thêm sản phẩm vào giỏ hàng!', 'success');
-        }
-
-        // Buy now with confetti
-        function buyNow(productId, button) {
-            createConfetti();
-            showToast('Chuyển hướng đến trang thanh toán...', 'info');
-            
-            // Simulate redirect
-            setTimeout(() => {
-                showToast('Demo: Tính năng thanh toán đang được phát triển!', 'info');
-            }, 1500);
-        }
-
-        // Load more products
-        function loadMoreProducts() {
-            const moreProducts = [
-                {
-                    id: 7,
-                    name: "Túi Gym Under Armour",
-                    category: "accessories",
-                    image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=300&fit=crop",
-                    originalPrice: 890000,
-                    salePrice: 690000,
-                    discount: 22,
-                    rating: 4.3,
-                    reviews: 45,
-                    badge: "Tiện lợi",
-                    description: "Túi tập gym Under Armour chống nước"
-                },
-                {
-                    id: 8,
-                    name: "Giày Puma Running",
-                    category: "shoes",
-                    image: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400&h=300&fit=crop",
-                    originalPrice: 1800000,
-                    salePrice: 1350000,
-                    discount: 25,
-                    rating: 4.6,
-                    reviews: 92,
-                    badge: "Nhẹ",
-                    description: "Giày chạy bộ Puma siêu nhẹ"
-                }
-            ];
-            
-            currentProducts = [...currentProducts, ...moreProducts];
-            renderProducts(currentProducts);
-            showToast('Đã tải thêm sản phẩm!', 'success');
-        }
-
-        // Flash sale countdown timer
-        function startFlashSaleTimer() {
-            let hours = 2;
-            let minutes = 45;
-            let seconds = 30;
-            
-            const timer = setInterval(() => {
-                seconds--;
-                
-                if (seconds < 0) {
-                    seconds = 59;
-                    minutes--;
-                }
-                
-                if (minutes < 0) {
-                    minutes = 59;
-                    hours--;
-                }
-                
-                if (hours < 0) {
-                    clearInterval(timer);
-                    showToast('Flash Sale đã kết thúc! Cảm ơn bạn đã tham gia.', 'info');
-                    return;
-                }
-                
-                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-            }, 1000);
-        }
-
-        // Sample friend posts data with optimized images
-        const friendPosts = [
+        const communityPosts = [
             {
                 id: 1,
                 author: "Minh Anh",
@@ -1611,30 +1490,107 @@
             }
         ];
 
-        // Render friend posts with lazy loading
-        function renderFriendPosts() {
-            const grid = document.getElementById('friendPostsGrid');
-            grid.innerHTML = friendPosts.map(post => `
-                <div class="col-md-6 col-lg-4">
+        const testimonials = [
+            {
+                name: "Minh Tuấn",
+                role: "Runner • Hà Nội",
+                avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face&auto=format&q=80",
+                content: "Nhờ nền tảng này, tôi đã tìm được nhóm chạy bộ tuyệt vời và hoàn thành marathon đầu tiên!",
+                rating: 5
+            },
+            {
+                name: "Thu Hà",
+                role: "Tennis Player • TP.HCM",
+                avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&h=80&fit=crop&crop=face&auto=format&q=80",
+                content: "Tìm được đối tác tennis cùng trình độ thật dễ dàng. Giờ tôi chơi tennis mỗi ngày!",
+                rating: 5
+            },
+            {
+                name: "Đức Anh",
+                role: "Football Player • Đà Nẵng",
+                avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face&auto=format&q=80",
+                content: "Đội bóng của tôi được thành lập từ app này. Chúng tôi đã vô địch giải địa phương!",
+                rating: 5
+            }
+        ];
+
+        // Render functions
+        function renderTournaments() {
+            const grid = document.getElementById('tournamentsGrid');
+            grid.innerHTML = tournaments.map(tournament => `
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="tournament-card">
+                        <img src="${tournament.image}" alt="${tournament.name}" class="lazy">
+                        <div class="p-4">
+                            <h3 class="fw-bold text-white">${tournament.name}</h3>
+                            <p class="text-muted mb-2">📅 ${tournament.date} • 📍 ${tournament.location}</p>
+                            <p class="mb-3 text-white-50">${tournament.description}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="badge bg-success">💰 ${tournament.prize}</span>
+                                <button class="btn btn-outline-light btn-sm" onclick="registerTournament(${tournament.id})">
+                                    Đăng Ký
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderProducts() {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = products.map(product => `
+                <div class="col-6 col-md-4 col-lg-3 mb-4">
+                    <div class="product-card">
+                        <div class="position-relative">
+                            <img src="${product.image}" alt="${product.name}" class="lazy">
+                            <span class="badge bg-primary">${product.badge}</span>
+                            <span class="badge discount-badge">-${product.discount}%</span>
+                        </div>
+                        <div class="p-3">
+                            <h6 class="fw-bold text-white mb-2">${product.name}</h6>
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="text-warning me-2">
+                                    ${'★'.repeat(Math.floor(product.rating))}${'☆'.repeat(5-Math.floor(product.rating))}
+                                </div>
+                                <small class="text-muted">(${product.reviews})</small>
+                            </div>
+                            <div class="mb-3">
+                                <span class="price-original">${product.originalPrice.toLocaleString()}đ</span>
+                                <div class="price-sale">${product.salePrice.toLocaleString()}đ</div>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-outline-light btn-sm flex-grow-1" onclick="addToCart(${product.id}, this)">
+                                    <i class="fas fa-cart-plus"></i> Thêm
+                                </button>
+                                <button class="glow-btn btn-sm" onclick="buyNow(${product.id})">
+                                    Mua
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderCommunity() {
+            const grid = document.getElementById('communityGrid');
+            grid.innerHTML = communityPosts.map(post => `
+                <div class="col-md-6 col-lg-4 mb-4">
                     <div class="friend-card">
                         <div class="d-flex align-items-center mb-3">
-                            <img data-src="${post.avatar}" 
-                                 alt="${post.author}" 
-                                 class="rounded-circle me-3 lazy" 
-                                 width="50" 
-                                 height="50"
-                                 style="background: linear-gradient(135deg, rgba(0,191,255,0.2), rgba(50,205,50,0.2));">
+                            <img src="${post.avatar}" alt="${post.author}" class="rounded-circle me-3 lazy" width="50" height="50">
                             <div>
-                                <h6 class="mb-0">${post.author}</h6>
+                                <h4 class="mb-0 text-white">${post.author}</h4>
                                 <small class="text-muted">${post.time}</small>
                             </div>
                         </div>
                         <div class="mb-2">
                             <span class="badge bg-primary">${post.sport}</span>
                         </div>
-                        <h5 class="mb-2">${post.title}</h5>
-                        <p class="mb-3">${post.content}</p>
-                        <div class="d-flex align-items-center justify-content-between text-muted small mb-3">
+                        <h5 class="mb-2 text-white">${post.title}</h5>
+                        <p class="mb-3 text-white-50">${post.content}</p>
+                        <div class="d-flex align-items-center justify-content-between text-muted mb-3">
                             <span><i class="fas fa-map-marker-alt"></i> ${post.location}</span>
                         </div>
                         <div class="d-flex justify-content-between">
@@ -1644,24 +1600,95 @@
                             <button class="btn btn-outline-light btn-sm">
                                 <i class="fas fa-comment"></i> ${post.comments}
                             </button>
-                            <button class="btn btn-outline-light btn-sm" onclick="sharePost(${post.id}, this)">
+                            <button class="btn btn-outline-light btn-sm" onclick="sharePost(${post.id})">
                                 <i class="fas fa-share"></i> Chia sẻ
                             </button>
                         </div>
                     </div>
                 </div>
             `).join('');
-            
-            // Initialize lazy loading for friend posts
-            initializeLazyLoading();
         }
 
-        // Like post with particle burst effect
+        function renderTestimonials() {
+            const grid = document.getElementById('testimonialsGrid');
+            grid.innerHTML = testimonials.map(testimonial => `
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="testimonial-card">
+                        <img src="${testimonial.avatar}" alt="${testimonial.name}" class="rounded-circle mb-3 lazy" width="80" height="80">
+                        <h4 class="text-white">${testimonial.name}</h4>
+                        <p class="text-muted">${testimonial.role}</p>
+                        <p class="text-white-50">"${testimonial.content}"</p>
+                        <div class="text-warning">
+                            ${'★'.repeat(testimonial.rating)}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Interactive functions
+        function scrollToSearch() {
+            document.getElementById('search').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function animateSelection(element) {
+            element.style.transform = 'scale(1.05)';
+            element.style.boxShadow = '0 0 20px rgba(0, 191, 255, 0.5)';
+            
+            setTimeout(() => {
+                element.style.transform = 'scale(1)';
+                element.style.boxShadow = '';
+            }, 300);
+        }
+
+        function filterProducts(category) {
+            // Visual feedback for category selection
+            document.querySelectorAll('.category-card').forEach(card => {
+                card.style.transform = 'scale(1)';
+                card.style.boxShadow = '';
+            });
+            
+            event.target.closest('.category-card').style.transform = 'scale(1.05)';
+            event.target.closest('.category-card').style.boxShadow = '0 0 30px rgba(0, 191, 255, 0.5)';
+            
+            showToast(`Đang lọc sản phẩm ${category}...`, 'info');
+        }
+
+        function addToCart(productId, button) {
+            const rect = button.getBoundingClientRect();
+            createParticleBurst(rect.left + rect.width/2, rect.top + rect.height/2);
+            
+            button.innerHTML = '<i class="fas fa-check"></i> Đã thêm';
+            button.classList.add('btn-success');
+            button.disabled = true;
+            
+            setTimeout(() => {
+                button.innerHTML = '<i class="fas fa-cart-plus"></i> Thêm';
+                button.classList.remove('btn-success');
+                button.disabled = false;
+            }, 2000);
+            
+            showToast('Đã thêm sản phẩm vào giỏ hàng!', 'success');
+        }
+
+        function buyNow(productId) {
+            createConfetti();
+            showToast('Chuyển hướng đến trang thanh toán...', 'info');
+        }
+
+        function loadMoreProducts() {
+            showToast('Đã tải thêm sản phẩm!', 'success');
+        }
+
+        function registerTournament(tournamentId) {
+            createConfetti();
+            showToast('Đăng ký thành công! Chúng tôi sẽ liên hệ với bạn sớm.', 'success');
+        }
+
         function likePost(postId, button) {
             const rect = button.getBoundingClientRect();
             createParticleBurst(rect.left + rect.width/2, rect.top + rect.height/2);
             
-            // Update like count
             const likeCount = button.querySelector('i').nextSibling;
             const currentLikes = parseInt(likeCount.textContent.trim());
             likeCount.textContent = ` ${currentLikes + 1}`;
@@ -1669,25 +1696,36 @@
             button.classList.add('text-danger');
         }
 
-        // Share post with particle burst
-        function sharePost(postId, button) {
-            const rect = button.getBoundingClientRect();
-            createParticleBurst(rect.left + rect.width/2, rect.top + rect.height/2);
-            
-            // Show success message
+        function sharePost(postId) {
             showToast('Đã chia sẻ bài đăng!', 'success');
         }
 
-        // Create particle burst effect
+        function openRegisterModal() {
+            document.getElementById('registerModal').classList.add('active');
+        }
+
+        function openPostModal() {
+            document.getElementById('postModal').classList.add('active');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        function openChat() {
+            showToast('Tính năng chat đang được phát triển! Vui lòng liên hệ qua email.', 'info');
+        }
+
+        // Effects
         function createParticleBurst(x, y) {
-            for (let i = 0; i < 12; i++) {
+            for (let i = 0; i < 8; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle-burst';
                 particle.style.left = x + 'px';
                 particle.style.top = y + 'px';
                 
-                const angle = (i / 12) * Math.PI * 2;
-                const distance = 50 + Math.random() * 50;
+                const angle = (i / 8) * Math.PI * 2;
+                const distance = 30 + Math.random() * 30;
                 const dx = Math.cos(angle) * distance;
                 const dy = Math.sin(angle) * distance;
                 
@@ -1700,83 +1738,43 @@
             }
         }
 
-        // Animation for form selection
-        function animateSelection(element) {
-            element.style.transform = 'scale(1.05)';
-            element.style.boxShadow = '0 0 20px rgba(0, 191, 255, 0.5)';
-            
-            setTimeout(() => {
-                element.style.transform = 'scale(1)';
-                element.style.boxShadow = '';
-            }, 300);
-        }
-
-        // Scroll to search section
-        function scrollToSearch() {
-            document.getElementById('search').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Modal functions
-        function openRegisterModal() {
-            new bootstrap.Modal(document.getElementById('registerModal')).show();
-        }
-
-        function openPostModal() {
-            new bootstrap.Modal(document.getElementById('postModal')).show();
-        }
-
-        // Tournament registration
-        function registerTournament(tournamentId) {
-            // Create confetti effect
-            createConfetti();
-            showToast('Đăng ký thành công! Chúng tôi sẽ liên hệ với bạn sớm.', 'success');
-        }
-
-        // Create confetti effect
         function createConfetti() {
-            for (let i = 0; i < 50; i++) {
+            for (let i = 0; i < 30; i++) {
                 const confetti = document.createElement('div');
                 confetti.style.position = 'fixed';
                 confetti.style.left = Math.random() * 100 + 'vw';
                 confetti.style.top = '-10px';
-                confetti.style.width = '10px';
-                confetti.style.height = '10px';
+                confetti.style.width = '8px';
+                confetti.style.height = '8px';
                 confetti.style.backgroundColor = ['#00BFFF', '#32CD32', '#FFD700'][Math.floor(Math.random() * 3)];
                 confetti.style.borderRadius = '50%';
                 confetti.style.pointerEvents = 'none';
                 confetti.style.zIndex = '9999';
-                confetti.style.animation = `fall ${2 + Math.random() * 3}s linear forwards`;
+                confetti.style.animation = `fall ${2 + Math.random() * 2}s linear forwards`;
                 
                 document.body.appendChild(confetti);
                 
-                setTimeout(() => confetti.remove(), 5000);
+                setTimeout(() => confetti.remove(), 4000);
             }
         }
 
-        // Add fall animation
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes fall {
-                to {
-                    transform: translateY(100vh) rotate(360deg);
-                }
-            }
-        `;
-        document.head.appendChild(style);
-
-        // Live chat function
-        function openChat() {
-            showToast('Tính năng chat đang được phát triển! Vui lòng liên hệ qua email.', 'info');
-        }
-
-        // Toast notification
         function showToast(message, type = 'info') {
             const toast = document.createElement('div');
-            toast.className = `alert alert-${type === 'success' ? 'success' : type === 'error' ? 'danger' : 'info'} position-fixed`;
-            toast.style.top = '20px';
-            toast.style.right = '20px';
-            toast.style.zIndex = '9999';
-            toast.style.minWidth = '300px';
+            toast.className = `toast toast-${type}`;
+            toast.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'success' ? '#32CD32' : type === 'error' ? '#FF6B6B' : '#00BFFF'};
+                color: white;
+                padding: 15px 20px;
+                border-radius: 10px;
+                z-index: 9999;
+                min-width: 300px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+            `;
             toast.innerHTML = `
                 <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
                 ${message}
@@ -1784,53 +1782,44 @@
             
             document.body.appendChild(toast);
             
+            setTimeout(() => toast.style.transform = 'translateX(0)', 100);
+            
             setTimeout(() => {
-                toast.style.opacity = '0';
+                toast.style.transform = 'translateX(100%)';
                 setTimeout(() => toast.remove(), 300);
             }, 3000);
         }
 
-        // Form submissions
-        document.getElementById('smartSearchForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+        // Flash sale timer
+        function startFlashSaleTimer() {
+            let hours = 2;
+            let minutes = 45;
+            let seconds = 30;
             
-            // Show loading
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<div class="loading"></div> Đang tìm kiếm...';
-            submitBtn.disabled = true;
-            
-            // Simulate AI matching
-            setTimeout(() => {
-                createConfetti();
-                showToast('Tìm thấy 5 đối tác phù hợp! Kiểm tra email để xem chi tiết.', 'success');
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-            }, 2000);
-        });
-
-        document.getElementById('registerForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            createConfetti();
-            showToast('Đăng ký thành công! Chào mừng bạn đến với cộng đồng!', 'success');
-            bootstrap.Modal.getInstance(document.getElementById('registerModal')).hide();
-            this.reset();
-        });
-
-        document.getElementById('postForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            createConfetti();
-            showToast('Bài đăng đã được tạo thành công!', 'success');
-            bootstrap.Modal.getInstance(document.getElementById('postModal')).hide();
-            this.reset();
-        });
-
-        document.getElementById('ctaForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            createConfetti();
-            showToast('Cảm ơn bạn đã đăng ký! Chúng tôi sẽ liên hệ sớm.', 'success');
-            this.reset();
-        });
+            const timer = setInterval(() => {
+                seconds--;
+                
+                if (seconds < 0) {
+                    seconds = 59;
+                    minutes--;
+                }
+                
+                if (minutes < 0) {
+                    minutes = 59;
+                    hours--;
+                }
+                
+                if (hours < 0) {
+                    clearInterval(timer);
+                    showToast('Flash Sale đã kết thúc!', 'info');
+                    return;
+                }
+                
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            }, 1000);
+        }
 
         // Navbar scroll effect
         window.addEventListener('scroll', function() {
@@ -1842,7 +1831,7 @@
             }
         });
 
-        // Intersection Observer for fade-in animations
+        // Intersection Observer for animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -1856,209 +1845,161 @@
             });
         }, observerOptions);
 
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            // Preload critical images first
-            preloadCriticalImages();
+        // Lazy loading for images
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.src || img.dataset.src;
+                    img.classList.remove('lazy');
+                    img.classList.add('loaded');
+                    observer.unobserve(img);
+                }
+            });
+        });
+
+        // Form submissions
+        document.getElementById('smartSearchForm').addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            // Initialize lazy loading system
-            initializeLazyLoading();
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<div class="loading"></div> Đang tìm kiếm...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                createConfetti();
+                showToast('Tìm thấy 5 đối tác phù hợp! Kiểm tra email để xem chi tiết.', 'success');
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 2000);
+        });
+
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            createConfetti();
+            showToast('Đăng ký thành công! Chào mừng bạn đến với cộng đồng!', 'success');
+            closeModal('registerModal');
+            this.reset();
+        });
+
+        document.getElementById('postForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            createConfetti();
+            showToast('Bài đăng đã được tạo thành công!', 'success');
+            closeModal('postModal');
+            this.reset();
+        });
+
+        document.getElementById('ctaForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            createConfetti();
+            showToast('Cảm ơn bạn đã đăng ký! Chúng tôi sẽ liên hệ sớm.', 'success');
+            this.reset();
+        });
+
+        // Close modals when clicking outside
+        document.querySelectorAll('.modal-overlay').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                }
+            });
+        });
+
+        // Load particles.js after user interaction
+        let particlesLoaded = false;
+        function loadParticles() {
+            if (particlesLoaded) return;
+            particlesLoaded = true;
+            
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js';
+            script.onload = function() {
+                const isMobile = window.innerWidth <= 768;
+                particlesJS('particles-js', {
+                    particles: {
+                        number: { value: isMobile ? 30 : 60 },
+                        color: { value: ['#00BFFF', '#32CD32', '#FFD700'] },
+                        shape: { type: 'circle' },
+                        opacity: { value: 0.4 },
+                        size: { value: 2, random: true },
+                        line_linked: { 
+                            enable: !isMobile, 
+                            distance: 120, 
+                            color: '#00BFFF', 
+                            opacity: 0.3, 
+                            width: 1 
+                        },
+                        move: { 
+                            enable: true, 
+                            speed: isMobile ? 2 : 3, 
+                            direction: 'none' 
+                        }
+                    },
+                    interactivity: {
+                        events: { 
+                            onhover: { enable: !isMobile, mode: 'repulse' }, 
+                            onclick: { enable: true, mode: 'push' } 
+                        }
+                    }
+                });
+            };
+            document.head.appendChild(script);
+        }
+
+        // Load particles on interaction or after delay
+        ['click', 'scroll', 'touchstart'].forEach(event => {
+            document.addEventListener(event, loadParticles, { once: true, passive: true });
+        });
+        setTimeout(loadParticles, 3000);
+
+        // Add fall animation for confetti
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fall {
+                to {
+                    transform: translateY(100vh) rotate(360deg);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Initialize everything when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load hero background
+            const heroBg = document.getElementById('heroBg');
+            const heroImg = new Image();
+            heroImg.onload = function() {
+                heroBg.style.backgroundImage = `url(${this.src})`;
+                heroBg.classList.add('loaded');
+            };
+            heroImg.src = 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1920&h=1080&fit=crop&auto=format&q=80';
             
             // Render content
-            renderFriendPosts();
+            renderTournaments();
             renderProducts();
+            renderCommunity();
+            renderTestimonials();
+            
+            // Start timer
             startFlashSaleTimer();
             
-            // Observe fade-in elements
+            // Initialize observers
             document.querySelectorAll('.fade-in').forEach(el => {
                 observer.observe(el);
             });
             
-            // Add sparkles randomly
-            setInterval(() => {
-                const sparkle = document.createElement('div');
-                sparkle.className = 'sparkle';
-                sparkle.style.left = Math.random() * 100 + 'vw';
-                sparkle.style.top = Math.random() * 100 + 'vh';
-                document.body.appendChild(sparkle);
-                
-                setTimeout(() => sparkle.remove(), 2000);
-            }, 3000);
+            document.querySelectorAll('img.lazy').forEach(img => {
+                imageObserver.observe(img);
+            });
             
             // Performance monitoring
-            if ('performance' in window) {
-                window.addEventListener('load', () => {
-                    const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
-                    console.log(`🚀 Trang web tải xong trong ${loadTime}ms`);
-                    
-                    // Show performance notification for development
-                    if (loadTime < 3000) {
-                        console.log('✅ Tốc độ tải trang: Xuất sắc!');
-                    } else if (loadTime < 5000) {
-                        console.log('⚡ Tốc độ tải trang: Tốt');
-                    } else {
-                        console.log('⏰ Tốc độ tải trang: Cần cải thiện');
-                    }
-                });
-            }
-        });
-
-        // Touch gestures for mobile
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        document.addEventListener('touchstart', function(e) {
-            touchStartX = e.changedTouches[0].screenX;
-        });
-
-        document.addEventListener('touchend', function(e) {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        });
-
-        function handleSwipe() {
-            const swipeThreshold = 50;
-            const diff = touchStartX - touchEndX;
-            
-            if (Math.abs(diff) > swipeThreshold) {
-                if (diff > 0) {
-                    // Swipe left - next slide
-                    const carousel = bootstrap.Carousel.getInstance(document.getElementById('tournamentCarousel'));
-                    if (carousel) carousel.next();
-                } else {
-                    // Swipe right - previous slide
-                    const carousel = bootstrap.Carousel.getInstance(document.getElementById('tournamentCarousel'));
-                    if (carousel) carousel.prev();
-                }
-            }
-        }
-
-        // Advanced Lazy Loading System
-        let lazyImageObserver;
-        
-        function initializeLazyLoading() {
-            if ('IntersectionObserver' in window) {
-                lazyImageObserver = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            const img = entry.target;
-                            loadImage(img);
-                            observer.unobserve(img);
-                        }
-                    });
-                }, {
-                    rootMargin: '50px 0px',
-                    threshold: 0.01
-                });
-
-                // Observe all lazy images
-                document.querySelectorAll('img[data-src]').forEach(img => {
-                    lazyImageObserver.observe(img);
-                });
-            } else {
-                // Fallback for older browsers
-                document.querySelectorAll('img[data-src]').forEach(img => {
-                    loadImage(img);
-                });
-            }
-        }
-
-        function loadImage(img) {
-            // Create a new image to preload
-            const imageLoader = new Image();
-            
-            imageLoader.onload = function() {
-                // Image loaded successfully
-                img.src = img.dataset.src;
-                img.classList.remove('lazy');
-                img.classList.add('loaded');
-                
-                // Handle progressive loading for product images
-                if (img.classList.contains('img-large')) {
-                    img.classList.add('loaded');
-                    // Hide the blurred small image
-                    const smallImg = img.parentElement.querySelector('.img-small');
-                    if (smallImg) {
-                        smallImg.style.opacity = '0';
-                    }
-                }
-                
-                // Handle hero background
-                if (img.closest('.hero-bg')) {
-                    img.closest('.hero-bg').classList.add('loaded');
-                }
-            };
-            
-            imageLoader.onerror = function() {
-                // Handle error - show placeholder
-                img.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlIG5vdCBhdmFpbGFibGU8L3RleHQ+PC9zdmc+';
-                img.classList.remove('lazy');
-                img.classList.add('error');
-            };
-            
-            // Start loading
-            imageLoader.src = img.dataset.src;
-        }
-
-        // Preload critical images
-        function preloadCriticalImages() {
-            const criticalImages = [
-                'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1920&h=1080&fit=crop&auto=format&q=80'
-            ];
-            
-            criticalImages.forEach(src => {
-                const link = document.createElement('link');
-                link.rel = 'preload';
-                link.as = 'image';
-                link.href = src;
-                document.head.appendChild(link);
+            window.addEventListener('load', () => {
+                const loadTime = performance.now();
+                console.log(`🚀 Trang web tải xong trong ${Math.round(loadTime)}ms`);
             });
-        }
-
-        // Image optimization utilities
-        function getOptimizedImageUrl(baseUrl, width, height, quality = 80) {
-            if (baseUrl.includes('unsplash.com')) {
-                return `${baseUrl}&w=${width}&h=${height}&fit=crop&auto=format&q=${quality}`;
-            }
-            return baseUrl;
-        }
-
-        // Responsive image loading based on device
-        function getResponsiveImageSize() {
-            const screenWidth = window.innerWidth;
-            if (screenWidth <= 576) return { width: 300, height: 225 };
-            if (screenWidth <= 768) return { width: 400, height: 300 };
-            if (screenWidth <= 992) return { width: 500, height: 375 };
-            return { width: 600, height: 450 };
-        }
-
-        // Update image sources for current viewport
-        function updateImageSources() {
-            const size = getResponsiveImageSize();
-            document.querySelectorAll('img[data-src]').forEach(img => {
-                if (img.dataset.originalSrc) {
-                    img.dataset.src = getOptimizedImageUrl(img.dataset.originalSrc, size.width, size.height);
-                }
-            });
-        }
-
-        // Debounced resize handler
-        let resizeTimeout;
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(updateImageSources, 250);
         });
     </script>
-
-    <!-- Google Analytics (Optional) -->
-    <!-- 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'GA_MEASUREMENT_ID');
-    </script>
-    -->
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97109ab6546e0484',t:'MTc1NTUxMTY0OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9710ca087402e6ca',t:'MTc1NTUxMzU4Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
