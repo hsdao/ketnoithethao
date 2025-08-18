@@ -223,7 +223,7 @@
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 15px;
-            color: white;
+            color: white !important;
             padding: 15px;
             transition: all 0.3s ease;
         }
@@ -232,10 +232,19 @@
             background: rgba(255, 255, 255, 0.2);
             border-color: var(--primary-blue);
             box-shadow: 0 0 20px rgba(0, 191, 255, 0.3);
-            color: white;
+            color: white !important;
         }
 
         .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.7) !important;
+        }
+
+        .form-select option {
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .form-select:invalid {
             color: rgba(255, 255, 255, 0.7);
         }
 
@@ -382,6 +391,81 @@
         }
 
         /* Mobile Optimizations */
+        @media (max-width: 576px) {
+            .hero {
+                height: 100vh;
+                padding: 0 15px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+                line-height: 1.2;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .search-form {
+                padding: 15px;
+                margin: 30px 0;
+            }
+            
+            .glass-card {
+                padding: 15px;
+                margin-bottom: 20px;
+            }
+            
+            .glow-btn {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            
+            .tournament-card {
+                margin-bottom: 20px;
+            }
+            
+            .friend-card {
+                padding: 15px;
+                margin-bottom: 20px;
+            }
+            
+            .testimonial-card {
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+            
+            .chat-bubble {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .navbar-brand {
+                font-size: 1.4rem;
+            }
+            
+            .display-4 {
+                font-size: 2rem;
+            }
+            
+            .form-control, .form-select {
+                padding: 12px;
+                font-size: 16px; /* Prevents zoom on iOS */
+            }
+            
+            .modal-dialog {
+                margin: 10px;
+            }
+            
+            .modal-content {
+                border-radius: 15px;
+            }
+        }
+
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2.5rem;
@@ -395,11 +479,38 @@
                 padding: 20px;
             }
             
-            .chat-bubble {
-                width: 50px;
-                height: 50px;
-                bottom: 20px;
-                right: 20px;
+            .glow-btn {
+                padding: 14px 25px;
+            }
+            
+            .container {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .hero {
+                background-attachment: fixed;
+            }
+        }
+
+        /* Touch-friendly improvements */
+        @media (hover: none) and (pointer: coarse) {
+            .glow-btn:hover {
+                transform: none;
+            }
+            
+            .glass-card:hover {
+                transform: none;
+            }
+            
+            .tournament-card:hover {
+                transform: none;
+            }
+            
+            .friend-card:hover {
+                transform: none;
             }
         }
 
@@ -558,25 +669,25 @@
                                     <i class="fas fa-running"></i> Môn thể thao yêu thích
                                 </label>
                                 <div class="row g-2">
-                                    <div class="col-6 col-md-3">
+                                    <div class="col-6 col-sm-6 col-md-3">
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" id="football">
                                             <label class="form-check-label" for="football">⚽ Bóng đá</label>
                                         </div>
                                     </div>
-                                    <div class="col-6 col-md-3">
+                                    <div class="col-6 col-sm-6 col-md-3">
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" id="badminton">
                                             <label class="form-check-label" for="badminton">🏸 Cầu lông</label>
                                         </div>
                                     </div>
-                                    <div class="col-6 col-md-3">
+                                    <div class="col-6 col-sm-6 col-md-3">
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" id="tennis">
                                             <label class="form-check-label" for="tennis">🎾 Tennis</label>
                                         </div>
                                     </div>
-                                    <div class="col-6 col-md-3">
+                                    <div class="col-6 col-sm-6 col-md-3">
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" id="running">
                                             <label class="form-check-label" for="running">🏃 Chạy bộ</label>
@@ -610,48 +721,48 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <div class="row g-4">
-                            <div class="col-md-4">
+                            <div class="col-12 col-sm-6 col-md-4">
                                 <div class="tournament-card">
                                     <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400&h=200&fit=crop" alt="Giải bóng đá" class="w-100">
-                                    <div class="p-4">
+                                    <div class="p-3 p-md-4">
                                         <h5 class="fw-bold">🏆 Giải Bóng Đá Mùa Xuân</h5>
-                                        <p class="text-muted mb-2">📅 15/02/2024 • 📍 Sân Mỹ Đình</p>
-                                        <p class="mb-3">Giải đấu bóng đá 7vs7 dành cho các đội nghiệp dư</p>
-                                        <div class="d-flex justify-content-between align-items-center">
+                                        <p class="text-muted mb-2 small">📅 15/02/2024 • 📍 Sân Mỹ Đình</p>
+                                        <p class="mb-3 small">Giải đấu bóng đá 7vs7 dành cho các đội nghiệp dư</p>
+                                        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-2">
                                             <span class="badge bg-success">💰 5.000.000đ</span>
-                                            <button class="btn btn-outline-light btn-sm" onclick="registerTournament(1)">
+                                            <button class="btn btn-outline-light btn-sm w-100 w-sm-auto" onclick="registerTournament(1)">
                                                 Đăng Ký
                                             </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-12 col-sm-6 col-md-4">
                                 <div class="tournament-card">
                                     <img src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=400&h=200&fit=crop" alt="Giải cầu lông" class="w-100">
-                                    <div class="p-4">
+                                    <div class="p-3 p-md-4">
                                         <h5 class="fw-bold">🏸 Cầu Lông Championship</h5>
-                                        <p class="text-muted mb-2">📅 20/02/2024 • 📍 Cung thể thao</p>
-                                        <p class="mb-3">Giải cầu lông đơn nam/nữ và đôi nam nữ</p>
-                                        <div class="d-flex justify-content-between align-items-center">
+                                        <p class="text-muted mb-2 small">📅 20/02/2024 • 📍 Cung thể thao</p>
+                                        <p class="mb-3 small">Giải cầu lông đơn nam/nữ và đôi nam nữ</p>
+                                        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-2">
                                             <span class="badge bg-success">💰 3.000.000đ</span>
-                                            <button class="btn btn-outline-light btn-sm" onclick="registerTournament(2)">
+                                            <button class="btn btn-outline-light btn-sm w-100 w-sm-auto" onclick="registerTournament(2)">
                                                 Đăng Ký
                                             </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-12 col-sm-6 col-md-4">
                                 <div class="tournament-card">
                                     <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=200&fit=crop" alt="Marathon" class="w-100">
-                                    <div class="p-4">
+                                    <div class="p-3 p-md-4">
                                         <h5 class="fw-bold">🏃 Marathon Hà Nội</h5>
-                                        <p class="text-muted mb-2">📅 25/02/2024 • 📍 Hồ Gươm</p>
-                                        <p class="mb-3">Cuộc đua marathon 42km qua các địa danh nổi tiếng</p>
-                                        <div class="d-flex justify-content-between align-items-center">
+                                        <p class="text-muted mb-2 small">📅 25/02/2024 • 📍 Hồ Gươm</p>
+                                        <p class="mb-3 small">Cuộc đua marathon 42km qua các địa danh nổi tiếng</p>
+                                        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-2">
                                             <span class="badge bg-success">🎁 Huy chương</span>
-                                            <button class="btn btn-outline-light btn-sm" onclick="registerTournament(3)">
+                                            <button class="btn btn-outline-light btn-sm w-100 w-sm-auto" onclick="registerTournament(3)">
                                                 Đăng Ký
                                             </button>
                                         </div>
@@ -701,13 +812,13 @@
             </div>
             
             <div class="row g-4">
-                <div class="col-md-4 fade-in">
+                <div class="col-12 col-sm-6 col-md-4 fade-in">
                     <div class="testimonial-card">
                         <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" 
                              alt="Minh Tuấn" class="rounded-circle mb-3" width="80" height="80">
                         <h5>Minh Tuấn</h5>
-                        <p class="text-muted">Runner • Hà Nội</p>
-                        <p>"Nhờ nền tảng này, tôi đã tìm được nhóm chạy bộ tuyệt vời và hoàn thành marathon đầu tiên!"</p>
+                        <p class="text-muted small">Runner • Hà Nội</p>
+                        <p class="small">"Nhờ nền tảng này, tôi đã tìm được nhóm chạy bộ tuyệt vời và hoàn thành marathon đầu tiên!"</p>
                         <div class="text-warning">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
@@ -717,13 +828,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 fade-in">
+                <div class="col-12 col-sm-6 col-md-4 fade-in">
                     <div class="testimonial-card">
                         <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&h=80&fit=crop&crop=face" 
                              alt="Thu Hà" class="rounded-circle mb-3" width="80" height="80">
                         <h5>Thu Hà</h5>
-                        <p class="text-muted">Tennis Player • TP.HCM</p>
-                        <p>"Tìm được đối tác tennis cùng trình độ thật dễ dàng. Giờ tôi chơi tennis mỗi ngày!"</p>
+                        <p class="text-muted small">Tennis Player • TP.HCM</p>
+                        <p class="small">"Tìm được đối tác tennis cùng trình độ thật dễ dàng. Giờ tôi chơi tennis mỗi ngày!"</p>
                         <div class="text-warning">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
@@ -733,13 +844,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 fade-in">
+                <div class="col-12 col-sm-6 col-md-4 fade-in">
                     <div class="testimonial-card">
                         <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face" 
                              alt="Đức Anh" class="rounded-circle mb-3" width="80" height="80">
                         <h5>Đức Anh</h5>
-                        <p class="text-muted">Football Player • Đà Nẵng</p>
-                        <p>"Đội bóng của tôi được thành lập từ app này. Chúng tôi đã vô địch giải địa phương!"</p>
+                        <p class="text-muted small">Football Player • Đà Nẵng</p>
+                        <p class="small">"Đội bóng của tôi được thành lập từ app này. Chúng tôi đã vô địch giải địa phương!"</p>
                         <div class="text-warning">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
@@ -765,13 +876,23 @@
                 </p>
                 <div class="row justify-content-center">
                     <div class="col-lg-6">
-                        <form id="ctaForm" class="d-flex gap-3">
-                            <input type="email" class="form-control" placeholder="Nhập email của bạn" required>
-                            <button type="submit" class="btn glow-btn">
+                        <form id="ctaForm" class="d-flex flex-column flex-sm-row gap-3">
+                            <input type="email" class="form-control flex-grow-1" placeholder="Nhập email của bạn" required>
+                            <button type="submit" class="btn glow-btn flex-shrink-0">
                                 Tham Gia Ngay
                             </button>
                         </form>
                     </div>
+                </div>
+                <div class="mt-4">
+                    <p class="small text-muted">
+                        💡 <strong>Bonus:</strong> Muốn tổ chức giải đấu để kiếm tiền? 
+                        Học khóa <a href="https://mmoidai.io.vn/" class="text-warning">MMO AI Mastery</a> 
+                        với mentor Coder Tay To để biến code thành "kim cương" thụ động! 
+                        Liên hệ <a href="mailto:ai@idai.vn" class="text-warning">ai@idai.vn</a> 
+                        hoặc <a href="tel:0926397972" class="text-warning">0926.397.972</a> 
+                        để đăng ký slot miễn phí! 😄
+                    </p>
                 </div>
             </div>
         </div>
@@ -1271,5 +1392,5 @@
         images.forEach(img => imageObserver.observe(img));
     </script>
 
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'970f7a5790f2037d',t:'MTc1NTQ5OTgzNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'970fc4bbb7cd0445',t:'MTc1NTUwMjg4My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
